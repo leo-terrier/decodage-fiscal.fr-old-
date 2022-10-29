@@ -6,7 +6,7 @@
 .pnp.js
 /coverage
 /build
-simulateur/
+/simulateur/
 pages/api/
 # misc
 .DS_Store
