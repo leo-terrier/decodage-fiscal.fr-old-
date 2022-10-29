@@ -18,7 +18,7 @@ import {
   TabPanel,
   TabPanels,
   Tabs,
-  useMediaQuery,
+  useMediaQuery
 } from '@chakra-ui/react';
 
 import { queryTypes, useQueryState } from 'next-usequerystate';
@@ -48,7 +48,7 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
   const [compensationD2, setCompensationD2] = useQueryState('compensationD2', queryTypes.integer.withDefault(0));
   const [salaryD2, setSalaryD2] = useQueryState('salaryD2', queryTypes.integer.withDefault(0));
   const [netIncomeD2, setNetIncomeD2] = useQueryState('netIncomeD2', queryTypes.integer.withDefault(0));
-  const [isProfessionalD2, setIsProfessionalD2] = useQueryState('isProfessionalD2', queryTypes.boolean.withDefault(true));
+  const [isProfessionalD2, setIsProfessionalD2] = useQueryState('isProfessionalD2', queryTypes.boolean.withDefault(true))
 
   const [autoModified, setAutoModified] = useState(false);
   const [hydrated, setHydrated] = useState(false);
@@ -783,7 +783,7 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
                               variant="flushed"
                               value={showValueInt(revenue)}
                               onChange={(value) => {
-                                setRevenue(value, { scroll: false, shallow: true });
+                                setRevenue(value, {scroll:false, shallow: true });
                               }}>
                               <NumberInputField
                                 allowMouseWheel="false"
