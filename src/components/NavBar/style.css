@@ -1,0 +1,23 @@
+.brand {
+  font-family: Sacramento;
+  font-size: 60px;
+  color: #7c5430;
+  position: absolute;
+  left: 15px;
+  bottom: -20px;
+}
+
+.menuP {
+  font-family: 'roboto';
+  font-weight: bolder;
+}
+.menuP:hover {
+  color: #7c5430;
+  cursor: pointer;
+}
+
+nav {
+  background: rgb(255,255,255);
+  /* background: rgb(255,255,255);
+background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(79,93,117,1) 100%); */
+}

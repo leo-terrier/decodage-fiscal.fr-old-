@@ -1,0 +1,14 @@
+{
+  "name": "Decodage-fiscal",
+  "icons": [
+    {
+      "src": "https://decodage-fiscal.fr/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

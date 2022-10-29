@@ -1,0 +1,18 @@
+html {
+  height: '100%';
+}
+
+html,
+body,
+#root,
+.App {
+  height: 100%;
+}
+
+#root > main {
+  height: '100%';
+}
+
+b {
+  color: #f65c2452
+}
