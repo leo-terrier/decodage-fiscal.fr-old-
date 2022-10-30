@@ -32,6 +32,7 @@ let expenseAboveD1 = false;
 let expenseAboveD2 = false;
 
 export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
+
   const [isMarried, setIsMarried] = useQueryState('isMarried', queryTypes.boolean.withDefault(false));
   const [nbOfChildren, setNbOfChildren] = useQueryState('nbOfChildren', queryTypes.integer.withDefault(0));
   const [socialForm, setSocialForm] = useQueryState('socialForm', queryTypes.string.withDefault('ME'));
@@ -250,16 +251,16 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
       });
 
       if (socialForm === 'SAS' && Math.abs(responseJson.remuneration - responseJson.IR - compensation) > 10) {
-        setCompensation(responseJson.remuneration - responseJson.IR, { scroll: false });
+        setCompensation(responseJson.remuneration - responseJson.IR, {scroll:false, shallow: true });
       }
       if (isMarried && socialFormD2 === 'SAS' && Math.abs(responseJson.remunerationD2 - responseJson.IRD2 - compensationD2) > 10) {
-        setCompensationD2(responseJson.remunerationD2 - responseJson.IRD2, { scroll: false });
+        setCompensationD2(responseJson.remunerationD2 - responseJson.IRD2, {scroll:false, shallow: true });
       }
 
       const validator = (str, state, setter) => {
         if (payload[str] !== state) {
           setAutoModified(true);
-          setter(payload[str], { scroll: false });
+          setter(payload[str], {scroll:false, shallow: true });
         }
       };
 
@@ -492,7 +493,7 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
                       }
                       return e.target.value === 'true' ? true : false;
                     },
-                    { scroll: false }
+                    {scroll:false, shallow: true }
                   );
                 }}
                 size="md">
@@ -573,7 +574,7 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
                               }
                               return e.target.value === 'true' ? true : false;
                             },
-                            { scroll: false }
+                            {scroll:false, shallow: true }
                           );
                         }}
                         sx={style.select}
@@ -595,7 +596,7 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
                         }}
                         variant="flushed"
                         value={nbOfChildren}
-                        onChange={(value) => setNbOfChildren(value, { scroll: false })}
+                        onChange={(value) => setNbOfChildren(value, {scroll:false, shallow: true })}
                         focusBorderColor="none"
                         min={0}>
                         <NumberInputField
@@ -695,7 +696,7 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
                           <div style={{ minWidth: '200px', maxWidth: '200px' }}>
                             <Select
                               value={socialForm}
-                              onChange={(e) => setSocialForm(e.target.value, { scroll: false })}
+                              onChange={(e) => setSocialForm(e.target.value, {scroll:false, shallow: true })}
                               sx={{ border: '1px solid black' }}
                               size="md">
                               <option value="ME">Micro-Entreprise</option>
@@ -714,7 +715,7 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
                             <div style={{ minWidth: '175px', maxWidth: '175px' }}>
                               <Select
                                 value={isService}
-                                onChange={(e) => setIsService(e.target.value === 'true' ? true : false, { scroll: false })}
+                                onChange={(e) => setIsService(e.target.value === 'true' ? true : false, {scroll:false, shallow: true })}
                                 size="md"
                                 sx={{ ...style.select }}>
                                 <option value={false}>Achat-revente</option>
@@ -734,7 +735,7 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
                             <div style={{ minWidth: '110px', maxWidth: '110px' }}>
                               <Select
                                 value={isProfessional}
-                                onChange={(e) => setIsProfessional(e.target.value === 'true' ? true : false, { scroll: false })}
+                                onChange={(e) => setIsProfessional(e.target.value === 'true' ? true : false, {scroll:false, shallow: true })}
                                 size="md"
                                 sx={style.select}>
                                 <option value={true}>Oui</option>
@@ -783,7 +784,7 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
                               variant="flushed"
                               value={showValueInt(revenue)}
                               onChange={(value) => {
-                                setRevenue(value, {scroll:false, shallow: true });
+                                setRevenue(value,{scroll:false, shallow: true });
                               }}>
                               <NumberInputField
                                 allowMouseWheel="false"
@@ -803,7 +804,7 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
                               variant="flushed"
                               value={showValueInt(expenses)}
                               onChange={(value) => {
-                                setExpenses(value, { scroll: false });
+                                setExpenses(value, {scroll:false, shallow: true });
                               }}>
                               <NumberInputField
                                 allowMouseWheel="false"
@@ -879,7 +880,7 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
                             <Select
                               value={activityD2}
                               onChange={(e) => {
-                                setActivityD2(e.target.value, { scroll: false });
+                                setActivityD2(e.target.value, {scroll:false, shallow: true });
                               }}
                               sx={style.select}
                               size="md">
@@ -900,9 +901,7 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
                             <Select
                               value={socialFormD2}
                               onChange={(e) => {
-                                setSocialFormD2(e.target.value, {
-                                  scroll: false,
-                                });
+                                setSocialFormD2(e.target.value, {scroll:false, shallow: true });
                               }}
                               size="md"
                               sx={{ border: '1px solid black' }}>
@@ -922,7 +921,7 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
                             <div style={{ minWidth: '175px', maxWidth: '175px' }}>
                               <Select
                                 value={isServiceD2}
-                                onChange={(e) => setIsServiceD2(e.target.value === 'true' ? true : false, { scroll: false })}
+                                onChange={(e) => setIsServiceD2(e.target.value === 'true' ? true : false, {scroll:false, shallow: true })}
                                 size="md"
                                 sx={style.select}>
                                 <option value={false}>Achat-revente</option>
@@ -942,7 +941,7 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
                             <div style={{ minWidth: '110px', maxWidth: '110px' }}>
                               <Select
                                 value={isProfessionalD2}
-                                onChange={(e) => setIsProfessionalD2(e.target.value === 'true' ? true : false, { scroll: false })}
+                                onChange={(e) => setIsProfessionalD2(e.target.value === 'true' ? true : false, {scroll:false, shallow: true })}
                                 size="md"
                                 sx={style.select}>
                                 <option value={true}>Oui</option>
@@ -993,9 +992,7 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
                               variant="flushed"
                               value={showValueInt(revenueD2)}
                               onChange={(value) => {
-                                setRevenueD2(maxRevenue(2, value), {
-                                  scroll: false,
-                                });
+                                setRevenueD2(maxRevenue(2, value), {scroll:false, shallow: true });
                               }}>
                               <NumberInputField
                                 allowMouseWheel="false"
@@ -1018,7 +1015,7 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
                               sx={style.numberInput}
                               variant="flushed"
                               value={showValueInt(expensesD2)}
-                              onChange={(value) => setExpensesD2(value, { scroll: false })}>
+                              onChange={(value) => setExpensesD2(value, {scroll:false, shallow: true })}>
                               <NumberInputField
                                 allowMouseWheel="false"
                                 style={style.numberInputField}
@@ -1062,7 +1059,7 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
                               sx={style.numberInput}
                               variant="flushed"
                               value={showValueInt(salaryD2)}
-                              onChange={(value) => setSalaryD2(value, { scroll: false })}>
+                              onChange={(value) => setSalaryD2(value, {scroll:false, shallow: true })}>
                               <NumberInputField
                                 allowMouseWheel="false"
                                 style={style.numberInputField}
@@ -1084,7 +1081,7 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
                               sx={style.numberInput}
                               variant="flushed"
                               value={showValueInt(netIncomeD2)}
-                              onChange={(value) => setNetIncomeD2(value, { scroll: false })}>
+                              onChange={(value) => setNetIncomeD2(value, {scroll:false, shallow: true })}>
                               <NumberInputField
                                 allowMouseWheel="false"
                                 sx={style.numberInputField}
