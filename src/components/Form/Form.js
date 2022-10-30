@@ -182,7 +182,7 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
         setLoadingDoubleSASComp(true);
       }
       if (activityD2 !== 'freelance') {
-        setSocialFormD2('ME');
+        setSocialFormD2('ME', {scroll: false, shallow: true});
       }
 
       const payload = {
@@ -276,10 +276,10 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
     }
 
     if (socialForm !== 'SAS' && compensation) {
-      setCompensation(0);
+      setCompensation(0, {scroll: false, shallow: true});
     }
     if ((socialFormD2 !== 'SAS' || !isMarried || activityD2 !== 'freelance') && compensationD2) {
-      setCompensationD2(0);
+      setCompensationD2(0, {scroll: false, shallow: true});
     }
     if ((socialForm === 'SAS' && expenseAboveD1) || (socialFormD2 === 'SAS' && expenseAboveD2)) {
       setAutoModified(false);
@@ -514,7 +514,7 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
               }}
               variant="flushed"
               value={nbOfChildren}
-              onChange={(value) => setNbOfChildren(value)}
+              onChange={(value) => setNbOfChildren(value, {scroll: false, shallow: true})}
               focusBorderColor="black"
               min={0}>
               <NumberInputField
@@ -827,7 +827,7 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
                               sx={style.numberInput}
                               variant="flushed"
                               value={showValueInt(compensation)}
-                              onChange={(value) => setCompensation(value)}>
+                              onChange={(value) => setCompensation(value, {scroll:false, shallow:true})}>
                               <NumberInputField
                                 allowMouseWheel="false"
                                 style={style.numberInputField}
@@ -1037,7 +1037,7 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
                               sx={style.numberInput}
                               variant="flushed"
                               value={showValueInt(compensationD2)}
-                              onChange={(value) => setCompensationD2(value)}>
+                              onChange={(value) => setCompensationD2(value, {scroll: false, shallow: true})}>
                               <NumberInputField
                                 allowMouseWheel="false"
                                 sx={style.numberInputField}
