@@ -13,7 +13,7 @@ Le calcul de l'impôt et des cotisations provient directement des textes de lois
 * AWS Lambda
 
 #### Frontend
-* NextJS (+ [next.useQueryState](https://www.npmjs.com/package/next-usequerystate))
+* NextJS (+ [next-useQueryState](https://www.npmjs.com/package/next-usequerystate))
 * ReactJS
 * ChartJS
 * Chakra UI
