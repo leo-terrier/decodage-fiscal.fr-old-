@@ -48,8 +48,7 @@ export default function Document() {
         {/*         <!-- Hotjar Tracking Code for https://decodage-fiscal.fr -->
          */}
         <script>
-          typeof window !== 'undefined'
-            ? (function (h, o, t, j, a, r) {
+           (function (h, o, t, j, a, r) {
                 h.hj =
                   h.hj ||
                   function () {
@@ -67,7 +66,7 @@ export default function Document() {
                 'https://static.hotjar.com/c/hotjar-',
                 '.js?sv='
               )
-            : ''
+
         </script>
       </Head>
       <body>
