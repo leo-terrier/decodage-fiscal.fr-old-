@@ -1,5 +1,26 @@
 import { Head, Html, Main, NextScript } from 'next/document';
 
+import { hotjar } from 'react-hotjar';
+
+hotjar.initialize('3226816', '6');
+
+// Identify the user
+hotjar.identify('USER_ID', { userProperty: 'value' });
+
+// Identify the user
+hotjar.identify('USER_ID', { userProperty: 'value' });
+
+// Add an event
+hotjar.event('button-click');
+
+// Update SPA state
+hotjar.stateChange('/my/page');
+
+// Check if Hotjar has been initialized before calling its methods
+if (hotjar.initialized()) {
+  hotjar.identify('USER_ID', { userProperty: 'value' });
+}
+
 export default function Document() {
   return (
     <Html lang="fr">
@@ -45,29 +66,6 @@ export default function Document() {
           content="https://decodage-fiscal.fr/logo-og.png"
         />
         <meta property="og:site_name" content="decodage-fiscal.fr" />
-        {/*         <!-- Hotjar Tracking Code for https://decodage-fiscal.fr -->
-         */}
-        <script>
-           (function (h, o, t, j, a, r) {
-                h.hj =
-                  h.hj ||
-                  function () {
-                    (h.hj.q = h.hj.q || []).push(arguments);
-                  };
-                h._hjSettings = { hjid: 3226816, hjsv: 6 };
-                a = o.getElementsByTagName('head')[0];
-                r = o.createElement('script');
-                r.async = 1;
-                r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
-                a.appendChild(r);
-              })(
-                window,
-                document,
-                'https://static.hotjar.com/c/hotjar-',
-                '.js?sv='
-              )
-
-        </script>
       </Head>
       <body>
         <Main />
