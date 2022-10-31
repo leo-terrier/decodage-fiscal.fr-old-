@@ -5,8 +5,11 @@ export default function Document() {
     <Html lang="fr">
       <Head>
         <meta charset="utf-8" />
-        <link rel="shortcut icon" href="https://decodage-fiscal.fr/favicon.ico" />
-        <link rel="icon" href="https://decodage-fiscal.fr/favicon.ico"/>
+        <link
+          rel="shortcut icon"
+          href="https://decodage-fiscal.fr/favicon.ico"
+        />
+        <link rel="icon" href="https://decodage-fiscal.fr/favicon.ico" />
         <meta name="viewport" content="initial-scale=1, viewport-fit=cover" />
         <meta name="theme-color" content="#000000" />
         <meta
@@ -29,13 +32,41 @@ export default function Document() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://decodage-fiscal.fr" />
-        <meta property="og:title" content="Simulation d'impôt pour freelance (par statut juridique)" />
+        <meta
+          property="og:title"
+          content="Simulation d'impôt pour freelance (par statut juridique)"
+        />
         <meta
           property="og:description"
           content="Site d'informations fiscales et juridiques à but pédagogique, permettant de réaliser des simulations d'impôts"
         />
-        <meta property="og:image" content="https://decodage-fiscal.fr/logo-og.png" />
+        <meta
+          property="og:image"
+          content="https://decodage-fiscal.fr/logo-og.png"
+        />
         <meta property="og:site_name" content="decodage-fiscal.fr" />
+{/*         <!-- Hotjar Tracking Code for https://decodage-fiscal.fr -->
+ */}
+        <script>
+          {(function (h, o, t, j, a, r) {
+            h.hj =
+              h.hj ||
+              function () {
+                (h.hj.q = h.hj.q || []).push(arguments);
+              };
+            h._hjSettings = { hjid: 3226816, hjsv: 6 };
+            a = o.getElementsByTagName('head')[0];
+            r = o.createElement('script');
+            r.async = 1;
+            r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+            a.appendChild(r);
+          })(
+            window,
+            document,
+            'https://static.hotjar.com/c/hotjar-',
+            '.js?sv='
+          )}
+        </script>
       </Head>
       <body>
         <Main />
