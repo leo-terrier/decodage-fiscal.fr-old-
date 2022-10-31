@@ -628,7 +628,7 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
             </FormLabel>
             <NumberInput
               keepWithinRange={true}
-              bg={'white'}
+              bg='white'
               sx={{
                 ...style.numberInput,
                 width: '70px',
@@ -751,8 +751,6 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
                           sx={{
                             ...style.numberInputField,
                             paddingRight: '34px',
-                            boxShadow: 'none',
-                            width: '70px',
                           }}
                           focusBorderColor="black"
                           _focus={{

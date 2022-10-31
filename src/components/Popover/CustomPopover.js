@@ -17,7 +17,7 @@ const content = (label) => {
             Il peut tout d'abord s'agir <Bold> des enfants mineurs dont vous avez la charge</Bold>.
           </p>
           <p style={styleP}>
-            Il peut par ailleurs s'agir des enfants <Bold>de moins de 26 ans, toujours étudiant, et rattachés à votre foyer fiscal</Bold>.
+            Il peut par ailleurs s'agir des enfants <Bold>de moins de 25 ans, toujours étudiant, et rattachés à votre foyer fiscal</Bold> (<a href="https://www.impots.gouv.fr/particulier/questions/mon-enfant-est-majeur-comment-le-declarer#:~:text=de%20vos%20revenus.-,Le%20rattachement,ou%20au%2031%20d%C3%A9cembre%202021." style={{textDecoration: "underline"}}>plus d'information</a>).
           </p>
         </div>
       );
