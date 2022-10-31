@@ -1,29 +1,5 @@
 import { Head, Html, Main, NextScript } from 'next/document';
-import { useEffect } from 'react';
 
-import { hotjar } from 'react-hotjar';
-
-
-useEffect(() => {
-  hotjar.initialize('3226816', '6');
-
-  // Identify the user
-  hotjar.identify('USER_ID', { userProperty: 'value' });
-
-  // Identify the user
-  hotjar.identify('USER_ID', { userProperty: 'value' });
-
-  // Add an event
-  hotjar.event('button-click');
-
-  // Update SPA state
-  hotjar.stateChange('/my/page');
-
-  // Check if Hotjar has been initialized before calling its methods
-  if (hotjar.initialized()) {
-    hotjar.identify('USER_ID', { userProperty: 'value' });
-  }
-}, [])
 
 
 export default function Document() {
