@@ -1,5 +1,5 @@
-import React from 'react';
 import { Box, Popover, PopoverBody, PopoverContent, PopoverTrigger } from '@chakra-ui/react';
+import React from 'react';
 import { BsQuestion } from 'react-icons/bs';
 
 const styleP = { margin: '15px', lineHeight: '1.75', fontFamily: 'Poppins' };
@@ -123,16 +123,15 @@ export const CustomPopover = ({ isLargerThan1000, label, isMeAboveLimit = false,
             boxShadow: 'none',
           }}
           role={isLargerThan1000 ? 'tooltip' : 'dialog'}
-          aria-label="Info-bulle">
+          aria-label="Info-bulle"
+          >
           <BsQuestion size="17px" />
         </Box>
       </PopoverTrigger>
-      <PopoverContent aria-describedby={label}>
+      <PopoverContent aria-describedby={label} sx={{backgroundColor: "white"}}>
         <PopoverBody
           id={label}
-          bg="white"
-          color="'RGBA(0, 0, 0, 0.64)'"
-          style={{
+          sx={{
             display: 'flex',
             flexDirection: 'column',
             fontWeight: '500',
@@ -146,7 +145,6 @@ export const CustomPopover = ({ isLargerThan1000, label, isMeAboveLimit = false,
                 position: 'relative',
                 fontFamily: 'Poppins',
                 padding: '10px 15px',
-                backgroundColor: 'rgba(239, 131, 84, .3)',
                 marginBottom: '15px',
               }}>
               <p style={{ margin: '0 ' }}>

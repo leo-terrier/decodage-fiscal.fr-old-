@@ -32,24 +32,74 @@ let expenseAboveD1 = false;
 let expenseAboveD2 = false;
 
 export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
-
-  const [isMarried, setIsMarried] = useQueryState('isMarried', queryTypes.boolean.withDefault(false));
-  const [nbOfChildren, setNbOfChildren] = useQueryState('nbOfChildren', queryTypes.integer.withDefault(0));
-  const [socialForm, setSocialForm] = useQueryState('socialForm', queryTypes.string.withDefault('ME'));
-  const [revenue, setRevenue] = useQueryState('revenue', queryTypes.integer.withDefault(0));
-  const [isService, setIsService] = useQueryState('isService', queryTypes.boolean.withDefault(false));
-  const [expenses, setExpenses] = useQueryState('expenses', queryTypes.integer.withDefault(0));
-  const [compensation, setCompensation] = useQueryState('compensation', queryTypes.integer.withDefault(0));
-  const [isProfessional, setIsProfessional] = useQueryState('isProfessional', queryTypes.boolean.withDefault(true));
-  const [activityD2, setActivityD2] = useQueryState('activityD2', queryTypes.string.withDefault('employee'));
-  const [socialFormD2, setSocialFormD2] = useQueryState('socialFormD2', queryTypes.string.withDefault('ME'));
-  const [revenueD2, setRevenueD2] = useQueryState('revenueD2', queryTypes.integer.withDefault(0));
-  const [isServiceD2, setIsServiceD2] = useQueryState('isServiceD2', queryTypes.boolean.withDefault(false));
-  const [expensesD2, setExpensesD2] = useQueryState('expensesD2', queryTypes.integer.withDefault(0));
-  const [compensationD2, setCompensationD2] = useQueryState('compensationD2', queryTypes.integer.withDefault(0));
-  const [salaryD2, setSalaryD2] = useQueryState('salaryD2', queryTypes.integer.withDefault(0));
-  const [netIncomeD2, setNetIncomeD2] = useQueryState('netIncomeD2', queryTypes.integer.withDefault(0));
-  const [isProfessionalD2, setIsProfessionalD2] = useQueryState('isProfessionalD2', queryTypes.boolean.withDefault(true))
+  const [isMarried, setIsMarried] = useQueryState(
+    'isMarried',
+    queryTypes.boolean.withDefault(false)
+  );
+  const [nbOfChildren, setNbOfChildren] = useQueryState(
+    'nbOfChildren',
+    queryTypes.integer.withDefault(0)
+  );
+  const [socialForm, setSocialForm] = useQueryState(
+    'socialForm',
+    queryTypes.string.withDefault('ME')
+  );
+  const [revenue, setRevenue] = useQueryState(
+    'revenue',
+    queryTypes.integer.withDefault(0)
+  );
+  const [isService, setIsService] = useQueryState(
+    'isService',
+    queryTypes.boolean.withDefault(false)
+  );
+  const [expenses, setExpenses] = useQueryState(
+    'expenses',
+    queryTypes.integer.withDefault(0)
+  );
+  const [compensation, setCompensation] = useQueryState(
+    'compensation',
+    queryTypes.integer.withDefault(0)
+  );
+  const [isProfessional, setIsProfessional] = useQueryState(
+    'isProfessional',
+    queryTypes.boolean.withDefault(true)
+  );
+  const [activityD2, setActivityD2] = useQueryState(
+    'activityD2',
+    queryTypes.string.withDefault('employee')
+  );
+  const [socialFormD2, setSocialFormD2] = useQueryState(
+    'socialFormD2',
+    queryTypes.string.withDefault('ME')
+  );
+  const [revenueD2, setRevenueD2] = useQueryState(
+    'revenueD2',
+    queryTypes.integer.withDefault(0)
+  );
+  const [isServiceD2, setIsServiceD2] = useQueryState(
+    'isServiceD2',
+    queryTypes.boolean.withDefault(false)
+  );
+  const [expensesD2, setExpensesD2] = useQueryState(
+    'expensesD2',
+    queryTypes.integer.withDefault(0)
+  );
+  const [compensationD2, setCompensationD2] = useQueryState(
+    'compensationD2',
+    queryTypes.integer.withDefault(0)
+  );
+  const [salaryD2, setSalaryD2] = useQueryState(
+    'salaryD2',
+    queryTypes.integer.withDefault(0)
+  );
+  const [netIncomeD2, setNetIncomeD2] = useQueryState(
+    'netIncomeD2',
+    queryTypes.integer.withDefault(0)
+  );
+  const [isProfessionalD2, setIsProfessionalD2] = useQueryState(
+    'isProfessionalD2',
+    queryTypes.boolean.withDefault(true)
+  );
 
   const [autoModified, setAutoModified] = useState(false);
   const [hydrated, setHydrated] = useState(false);
@@ -70,7 +120,7 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
 
   let SASRevAlreadyAdjusted = false;
 
-  const showValueInt = (value) => {
+  const showValueInt = value => {
     if (!revenue && !value) {
       return '';
     }
@@ -88,7 +138,12 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
       }
       result = Math.max(0, Math.min(max, value));
     } else {
-      if (socialForm === 'SAS' && socialFormD2 === 'SAS' && revenueD2 > 200000 && !SASRevAlreadyAdjusted) {
+      if (
+        socialForm === 'SAS' &&
+        socialFormD2 === 'SAS' &&
+        revenueD2 > 200000 &&
+        !SASRevAlreadyAdjusted
+      ) {
         max = 200000;
       }
       result = Math.max(0, Math.min(max, value));
@@ -96,7 +151,7 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
     return result;
   };
 
-  const maxExpense = (whichD) => {
+  const maxExpense = whichD => {
     let result;
     if (whichD === 1) {
       expenseAboveD1 = expenses > revenue;
@@ -138,7 +193,7 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
     return result;
   };
 
-  const maxComp = (whichD) => {
+  const maxComp = whichD => {
     let result;
     if (whichD === 1) {
       if (socialForm !== 'SAS') return 0;
@@ -149,8 +204,12 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
         result = 200000;
       } else result = compensation;
     } else {
-      if (!isMarried || socialFormD2 !== 'SAS' || activityD2 !== 'freelance') return 0;
-      if (socialFormD2 === 'SAS' && compensationD2 > (revenueD2 - expensesD2) / 1.6) {
+      if (!isMarried || socialFormD2 !== 'SAS' || activityD2 !== 'freelance')
+        return 0;
+      if (
+        socialFormD2 === 'SAS' &&
+        compensationD2 > (revenueD2 - expensesD2) / 1.6
+      ) {
         result = (revenueD2 - expensesD2) / 1.6;
       } else result = compensationD2;
     }
@@ -158,7 +217,7 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
     return result;
   };
 
-  const getResults = async (abortObj) => {
+  const getResults = async abortObj => {
     if (revenue) {
       if (autoModified) {
         setAutoModified(false);
@@ -178,11 +237,15 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
         setIsMeD2AboveLimit(false);
       }
 
-      if (compensationD2 && compensation && compensation + compensationD2 > 80000) {
+      if (
+        compensationD2 &&
+        compensation &&
+        compensation + compensationD2 > 80000
+      ) {
         setLoadingDoubleSASComp(true);
       }
       if (activityD2 !== 'freelance') {
-        setSocialFormD2('ME', {scroll: false, shallow: true});
+        setSocialFormD2('ME', { scroll: false, shallow: true });
       }
 
       const payload = {
@@ -194,25 +257,52 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
         expenses: maxExpense(1),
         compensation: maxComp(1),
         isProfessional,
-        socialFormD2: activityD2 === 'employee' ? 'salariat' : activityD2 === 'other' || activityD2 === 'other2' ? 'other' : socialFormD2,
+        socialFormD2:
+          activityD2 === 'employee'
+            ? 'salariat'
+            : activityD2 === 'other' || activityD2 === 'other2'
+            ? 'other'
+            : socialFormD2,
         revenueD2: maxRevenue(2, revenueD2),
         isServiceD2,
         expensesD2: maxExpense(2),
         compensationD2: maxComp(2),
-        salaryD2: !isMarried || activityD2 !== 'employee' ? 0 : salaryD2 > 10000000 ? 10000000 : salaryD2,
-        netIncomeD2: !isMarried || !activityD2.includes('other') ? 0 : netIncomeD2 > 10000000 ? 10000000 : netIncomeD2,
+        salaryD2:
+          !isMarried || activityD2 !== 'employee'
+            ? 0
+            : salaryD2 > 10000000
+            ? 10000000
+            : salaryD2,
+        netIncomeD2:
+          !isMarried || !activityD2.includes('other')
+            ? 0
+            : netIncomeD2 > 10000000
+            ? 10000000
+            : netIncomeD2,
         isProfessionalD2,
       };
 
       if (process.env.NODE_ENV !== 'production') {
-        Object.keys(payload).forEach((elt) => {
-          if (typeof payload[elt] !== 'number' && typeof payload[elt] !== 'string' && typeof payload[elt] !== 'boolean') {
-            throw new Error('type problem : ' + elt + ` - ${payload[elt]} is of type ` + typeof payload[elt]);
+        Object.keys(payload).forEach(elt => {
+          if (
+            typeof payload[elt] !== 'number' &&
+            typeof payload[elt] !== 'string' &&
+            typeof payload[elt] !== 'boolean'
+          ) {
+            throw new Error(
+              'type problem : ' +
+                elt +
+                ` - ${payload[elt]} is of type ` +
+                typeof payload[elt]
+            );
           }
         });
       }
 
-      const url = process.env.NODE_ENV === 'production' ? 'https://ceb5nuqtol.execute-api.eu-west-3.amazonaws.com/?' : '/api/results?';
+      const url =
+        process.env.NODE_ENV === 'production'
+          ? 'https://ceb5nuqtol.execute-api.eu-west-3.amazonaws.com/?'
+          : '/api/results?';
       let response;
       try {
         response = await fetch(url + serialize(payload), abortObj);
@@ -239,8 +329,8 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
         'children',
       ];
 
-      Object.keys(responseJson).forEach((elt) => {
-        numberValueArray.forEach((elet) => {
+      Object.keys(responseJson).forEach(elt => {
+        numberValueArray.forEach(elet => {
           if (elt.includes(elet)) {
             responseJson[elt] = Math.round(Number(responseJson[elt]));
           }
@@ -250,17 +340,33 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
         }
       });
 
-      if (socialForm === 'SAS' && Math.abs(responseJson.remuneration - responseJson.IR - compensation) > 10) {
-        setCompensation(responseJson.remuneration - responseJson.IR, {scroll:false, shallow: true });
+      if (
+        socialForm === 'SAS' &&
+        Math.abs(responseJson.remuneration - responseJson.IR - compensation) >
+          10
+      ) {
+        setCompensation(responseJson.remuneration - responseJson.IR, {
+          scroll: false,
+          shallow: true,
+        });
       }
-      if (isMarried && socialFormD2 === 'SAS' && Math.abs(responseJson.remunerationD2 - responseJson.IRD2 - compensationD2) > 10) {
-        setCompensationD2(responseJson.remunerationD2 - responseJson.IRD2, {scroll:false, shallow: true });
+      if (
+        isMarried &&
+        socialFormD2 === 'SAS' &&
+        Math.abs(
+          responseJson.remunerationD2 - responseJson.IRD2 - compensationD2
+        ) > 10
+      ) {
+        setCompensationD2(responseJson.remunerationD2 - responseJson.IRD2, {
+          scroll: false,
+          shallow: true,
+        });
       }
 
       const validator = (str, state, setter) => {
         if (payload[str] !== state) {
           setAutoModified(true);
-          setter(payload[str], {scroll:false, shallow: true });
+          setter(payload[str], { scroll: false, shallow: true });
         }
       };
 
@@ -276,12 +382,18 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
     }
 
     if (socialForm !== 'SAS' && compensation) {
-      setCompensation(0, {scroll: false, shallow: true});
+      setCompensation(0, { scroll: false, shallow: true });
     }
-    if ((socialFormD2 !== 'SAS' || !isMarried || activityD2 !== 'freelance') && compensationD2) {
-      setCompensationD2(0, {scroll: false, shallow: true});
+    if (
+      (socialFormD2 !== 'SAS' || !isMarried || activityD2 !== 'freelance') &&
+      compensationD2
+    ) {
+      setCompensationD2(0, { scroll: false, shallow: true });
     }
-    if ((socialForm === 'SAS' && expenseAboveD1) || (socialFormD2 === 'SAS' && expenseAboveD2)) {
+    if (
+      (socialForm === 'SAS' && expenseAboveD1) ||
+      (socialFormD2 === 'SAS' && expenseAboveD2)
+    ) {
       setAutoModified(false);
     }
   };
@@ -330,7 +442,11 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
     },
     titleDiv: {
       alignSelf: 'center',
-      marginBottom: !isLargerThan1215 ? 0 : isLargerThan1215 && isMarried ? '95px' : '70px',
+      marginBottom: !isLargerThan1215
+        ? 0
+        : isLargerThan1215 && isMarried
+        ? '95px'
+        : '70px',
       borderBottom: 'none',
     },
     title: {
@@ -361,7 +477,8 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
       color: colors.dBlue,
       position: 'relative',
       fontFamily: 'Nunito Sans',
-      boxShadow: 'rgba(0, 0, 0, 0.1) 1px 4px 6px -1px, rgba(0, 0, 0, 0.06) 1px 2px 4px -1px',
+      boxShadow:
+        'rgba(0, 0, 0, 0.1) 1px 4px 6px -1px, rgba(0, 0, 0, 0.06) 1px 2px 4px -1px',
       width: isLargerThan800 ? '96%' : isLargerThan500 ? '360px' : '330px',
       height: isLargerThan800 ? '90px' : isLargerThan500 ? '170px' : '145px',
       maxWidth: isLargerThan800 ? '700px' : 'none',
@@ -477,33 +594,38 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
         </div>
 
         <div style={style.foyerSection}>
-          <h2 style={style.foyerSectionTitle}>Information foyer</h2>
+          <h2 style={style.foyerSectionTitle}>Informations foyer</h2>
           <HStack sx={style.HStackFoyer}>
-            <FormLabel sx={{ ...style.formLabel, fontSize: '1rem' }}>Statut marital :</FormLabel>
+            <FormLabel sx={{ ...style.formLabel, fontSize: '1rem' }}>
+              Statut marital :
+            </FormLabel>
             <div style={{ minWidth: '180px', maxWidth: '180px' }}>
               <Select
                 value={isMarried}
                 sx={{ ...style.select }}
                 bg={'white'}
-                onChange={(e) => {
+                onChange={e => {
                   setIsMarried(
-                    (prev) => {
+                    prev => {
                       if (prev) {
                         setTabIndex(0);
                       }
                       return e.target.value === 'true' ? true : false;
                     },
-                    {scroll:false, shallow: true }
+                    { scroll: false, shallow: true }
                   );
                 }}
-                size="md">
+                size="md"
+              >
                 <option value={false}>Célibataire</option>
                 <option value={true}>Marié / Pacsé</option>
               </Select>
             </div>
           </HStack>
           <HStack sx={style.HStackFoyer}>
-            <FormLabel sx={{ ...style.formLabel, fontSize: '1rem' }}>Nombre d'enfants : </FormLabel>
+            <FormLabel sx={{ ...style.formLabel, fontSize: '1rem' }}>
+              Nombre d'enfants :{' '}
+            </FormLabel>
             <NumberInput
               keepWithinRange={true}
               bg={'white'}
@@ -514,11 +636,13 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
               }}
               variant="flushed"
               value={nbOfChildren}
-              onChange={(value) => setNbOfChildren(value, {scroll: false, shallow: true})}
+              onChange={value =>
+                setNbOfChildren(value, { scroll: false, shallow: true })
+              }
               focusBorderColor="black"
-              min={0}>
+              min={0}
+            >
               <NumberInputField
-
                 sx={{
                   ...style.numberInputField,
                   paddingRight: '34px',
@@ -531,32 +655,47 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
                 <NumberDecrementStepper />
               </NumberInputStepper>
             </NumberInput>
-            <CustomPopover isLargerThan1000={isLargerThan1000} label="nbOfChildren" />
+            <CustomPopover
+              isLargerThan1000={isLargerThan1000}
+              label="nbOfChildren"
+            />
           </HStack>
         </div>
         <div style={style.outterFormBox}>
           <div style={style.innerFormBox} className="innerFormBox">
             <Accordion
               onChange={() => {
-                setIsAccordion1Open((prev) => !prev);
+                setIsAccordion1Open(prev => !prev);
               }}
               allowToggle
               sx={{
                 width: '33.3%',
                 position: 'relative',
                 display: !isLargerThan1215 ? 'none' : 'initial',
-              }}>
+              }}
+            >
               <AccordionItem
                 sx={{
                   border: '1px solid',
                   borderRight:
-                    isMarried || !((isAccordion2Open && socialForm === 'ME' && isAccordion1Open) || !isAccordion1Open) ? '1px solid' : 'none',
+                    isMarried ||
+                    !(
+                      (isAccordion2Open &&
+                        socialForm === 'ME' &&
+                        isAccordion1Open) ||
+                      !isAccordion1Open
+                    )
+                      ? '1px solid'
+                      : 'none',
                   backgroundColor: colors.mBlue,
                   boxShadow: style.boxShadow,
-                }}>
+                }}
+              >
                 <h2>
                   <AccordionButton>
-                    <Box sx={{ ...style.accordionButtonBox, color: 'white' }}>Informations Foyer</Box>
+                    <Box sx={{ ...style.accordionButtonBox, color: 'white' }}>
+                      Informations Foyer
+                    </Box>
                     <AccordionIcon color="white" sx={{ fontSize: '35px' }} />
                   </AccordionButton>
                 </h2>
@@ -566,26 +705,29 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
                     <div style={{ minWidth: '180px', maxWidth: '180px' }}>
                       <Select
                         value={isMarried}
-                        onChange={(e) => {
+                        onChange={e => {
                           setIsMarried(
-                            (prev) => {
+                            prev => {
                               if (prev) {
                                 setTabIndex(0);
                               }
                               return e.target.value === 'true' ? true : false;
                             },
-                            {scroll:false, shallow: true }
+                            { scroll: false, shallow: true }
                           );
                         }}
                         sx={style.select}
-                        size="md">
+                        size="md"
+                      >
                         <option value={false}>Célibataire</option>
                         <option value={true}>Marié / Pacsé</option>
                       </Select>
                     </div>
                   </HStack>
                   <HStack sx={{ ...style.hStack }}>
-                    <FormLabel sx={{ ...style.formLabel }}>NOMBRE D'ENFANTS</FormLabel>
+                    <FormLabel sx={{ ...style.formLabel }}>
+                      NOMBRE D'ENFANTS
+                    </FormLabel>
                     <HStack sx={{ width: '100px', justifyContent: 'start' }}>
                       <NumberInput
                         keepWithinRange={true}
@@ -596,11 +738,16 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
                         }}
                         variant="flushed"
                         value={nbOfChildren}
-                        onChange={(value) => setNbOfChildren(value, {scroll:false, shallow: true })}
+                        onChange={value =>
+                          setNbOfChildren(value, {
+                            scroll: false,
+                            shallow: true,
+                          })
+                        }
                         focusBorderColor="black"
-                        min={0}>
+                        min={0}
+                      >
                         <NumberInputField
-
                           sx={{
                             ...style.numberInputField,
                             paddingRight: '34px',
@@ -608,14 +755,20 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
                             width: '70px',
                           }}
                           focusBorderColor="black"
-                          _focus={{ borderColor: 'initial', boxShadow: 'initial' }}
+                          _focus={{
+                            borderColor: 'initial',
+                            boxShadow: 'initial',
+                          }}
                         />
                         <NumberInputStepper>
                           <NumberIncrementStepper />
                           <NumberDecrementStepper />
                         </NumberInputStepper>
                       </NumberInput>
-                      <CustomPopover isLargerThan1000={isLargerThan1000} label="nbOfChildren" />
+                      <CustomPopover
+                        isLargerThan1000={isLargerThan1000}
+                        label="nbOfChildren"
+                      />
                     </HStack>
                   </HStack>
                 </AccordionPanel>
@@ -632,21 +785,24 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
                 border: 'none',
                 width: isLargerThan1215 ? '66.66%' : '100%',
                 marginLeft: isLargerThan1215 && isMarried ? '15px' : '0',
-              }}>
+              }}
+            >
               <TabList
                 sx={{
                   position: 'absolute',
                   top: isLargerThan800 ? '-62px' : '-90px',
                   right: '0',
                   display: !isMarried ? 'none' : 'flex',
-                }}>
+                }}
+              >
                 <Tab
                   _selected={{
                     borderBottom: '2px solid',
                     fontWeight: 700,
                     borderColor: colors.dBlue,
                   }}
-                  sx={style.tab}>
+                  sx={style.tab}
+                >
                   Situation du freelance
                 </Tab>
                 <Tab
@@ -655,7 +811,8 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
                     fontWeight: 700,
                     borderColor: colors.dGray,
                   }}
-                  sx={style.tab}>
+                  sx={style.tab}
+                >
                   Situation du conjoint
                 </Tab>
               </TabList>
@@ -663,42 +820,64 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
                 <TabPanel sx={style.tabPanel}>
                   <Accordion
                     index={[isAccordion2Open ? 0 : null]}
-                    onChange={() => setIsAccordion2Open((prev) => !prev)}
+                    onChange={() => setIsAccordion2Open(prev => !prev)}
                     allowToggle
                     sx={{
                       width: '100%',
-                    }}>
+                    }}
+                  >
                     <AccordionItem
                       sx={{
                         backgroundColor: colors.mBlue,
                         border: '1px solid',
                         borderLeft: !isLargerThan800
                           ? '1px solid'
-                          : isMarried || !isAccordion1Open || (isAccordion1Open && isAccordion2Open && socialForm === 'ME')
+                          : isMarried ||
+                            !isAccordion1Open ||
+                            (isAccordion1Open &&
+                              isAccordion2Open &&
+                              socialForm === 'ME')
                           ? '1px solid'
                           : 'none',
                         borderRight: !isLargerThan800
                           ? '1px solid'
-                          : !isAccordion3Open || (isAccordion3Open && isAccordion2Open && socialForm === 'ME')
+                          : !isAccordion3Open ||
+                            (isAccordion3Open &&
+                              isAccordion2Open &&
+                              socialForm === 'ME')
                           ? '1px solid'
                           : 'none',
                         boxShadow: isLargerThan800 ? style.boxShadow : 'none',
-                      }}>
+                      }}
+                    >
                       <h2>
                         <AccordionButton>
-                          <Box sx={style.accordionButtonBox}>Informations Activité</Box>
-                          <AccordionIcon color="white" sx={{ fontSize: '35px' }} />
+                          <Box sx={style.accordionButtonBox}>
+                            Informations Activité
+                          </Box>
+                          <AccordionIcon
+                            color="white"
+                            sx={{ fontSize: '35px' }}
+                          />
                         </AccordionButton>
                       </h2>
                       <AccordionPanel sx={style.panel}>
                         <HStack sx={style.hStack}>
-                          <FormLabel style={style.formLabel}>FORME JURIDIQUE</FormLabel>
+                          <FormLabel style={style.formLabel}>
+                            FORME JURIDIQUE
+                          </FormLabel>
                           <div style={{ minWidth: '200px', maxWidth: '200px' }}>
                             <Select
                               value={socialForm}
-                              onChange={(e) => setSocialForm(e.target.value, {scroll:false, shallow: true })}
+                              onChange={e =>
+                                setSocialForm(e.target.value, {
+                                  scroll: false,
+                                  shallow: true,
+                                })
+                              }
                               sx={{ border: '1px solid black' }}
-                              size="md">
+                              size="md"
+                            >
                               <option value="ME">Micro-Entreprise</option>
                               <option value="SARL">SARL / EURL</option>
                               <option value="SAS">SAS / SASU</option>
@@ -709,40 +888,71 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
                           sx={{
                             ...style.hStack,
                             display: socialForm !== 'ME' ? 'none' : 'flex',
-                          }}>
-                          <FormLabel sx={style.formLabel}>TYPE D'ACTIVITE</FormLabel>
+                          }}
+                        >
+                          <FormLabel sx={style.formLabel}>
+                            TYPE D'ACTIVITE
+                          </FormLabel>
                           <div style={style.inputOutterDiv}>
-                            <div style={{ minWidth: '175px', maxWidth: '175px' }}>
+                            <div
+                              style={{ minWidth: '175px', maxWidth: '175px' }}
+                            >
                               <Select
                                 value={isService}
-                                onChange={(e) => setIsService(e.target.value === 'true' ? true : false, {scroll:false, shallow: true })}
+                                onChange={e =>
+                                  setIsService(
+                                    e.target.value === 'true' ? true : false,
+                                    { scroll: false, shallow: true }
+                                  )
+                                }
                                 size="md"
-                                sx={{ ...style.select }}>
+                                sx={{ ...style.select }}
+                              >
                                 <option value={false}>Achat-revente</option>
                                 <option value={true}>Autre</option>
                               </Select>
                             </div>
-                            <CustomPopover isLargerThan1000={isLargerThan1000} label="isService" />
+                            <CustomPopover
+                              isLargerThan1000={isLargerThan1000}
+                              label="isService"
+                            />
                           </div>
                         </HStack>
                         <HStack
                           style={{
                             ...style.hStack,
-                            display: isService && socialForm === 'ME' ? 'flex' : 'none',
-                          }}>
-                          <FormLabel sx={style.formLabel}>ACTIVITE LIBERALE</FormLabel>
+                            display:
+                              isService && socialForm === 'ME'
+                                ? 'flex'
+                                : 'none',
+                          }}
+                        >
+                          <FormLabel sx={style.formLabel}>
+                            ACTIVITE LIBERALE
+                          </FormLabel>
                           <div style={style.inputOutterDiv}>
-                            <div style={{ minWidth: '110px', maxWidth: '110px' }}>
+                            <div
+                              style={{ minWidth: '110px', maxWidth: '110px' }}
+                            >
                               <Select
                                 value={isProfessional}
-                                onChange={(e) => setIsProfessional(e.target.value === 'true' ? true : false, {scroll:false, shallow: true })}
+                                onChange={e =>
+                                  setIsProfessional(
+                                    e.target.value === 'true' ? true : false,
+                                    { scroll: false, shallow: true }
+                                  )
+                                }
                                 size="md"
-                                sx={style.select}>
+                                sx={style.select}
+                              >
                                 <option value={true}>Oui</option>
                                 <option value={false}>Non</option>
                               </Select>
                             </div>
-                            <CustomPopover isLargerThan1000={isLargerThan1000} label="isProfessional" />
+                            <CustomPopover
+                              isLargerThan1000={isLargerThan1000}
+                              label="isProfessional"
+                            />
                           </div>
                         </HStack>
                       </AccordionPanel>
@@ -752,47 +962,71 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
                     allowToggle
                     index={[isAccordion3Open ? 0 : null]}
                     onChange={() => {
-                      setIsAccordion3Open((prev) => !prev);
+                      setIsAccordion3Open(prev => !prev);
                     }}
                     sx={{
                       width: '100%',
-                    }}>
+                    }}
+                  >
                     <AccordionItem
                       sx={{
                         border: '1px solid',
                         borderLeft: !isLargerThan800
                           ? '1px solid'
-                          : (isAccordion2Open && socialForm === 'ME' && isAccordion3Open) || !isAccordion3Open
+                          : (isAccordion2Open &&
+                              socialForm === 'ME' &&
+                              isAccordion3Open) ||
+                            !isAccordion3Open
                           ? 'none'
                           : '1px solid',
                         borderTop: !isLargerThan800 ? 'none' : '1px solid',
                         backgroundColor: colors.mBlue,
                         boxShadow: isLargerThan800 ? style.boxShadow : 'none',
-                      }}>
+                      }}
+                    >
                       <h2>
                         <AccordionButton>
-                          <Box sx={style.accordionButtonBox}>Informations Financières</Box>
-                          <AccordionIcon color="white" sx={{ fontSize: '35px' }} />
+                          <Box sx={style.accordionButtonBox}>
+                            Informations Financières
+                          </Box>
+                          <AccordionIcon
+                            color="white"
+                            sx={{ fontSize: '35px' }}
+                          />
                         </AccordionButton>
                       </h2>
                       <AccordionPanel sx={{ ...style.panel }}>
                         <HStack sx={{ ...style.hStack }}>
-                          <FormLabel sx={style.formLabel}>CHIFFRE D'AFFAIRES</FormLabel>
+                          <FormLabel sx={style.formLabel}>
+                            CHIFFRE D'AFFAIRES
+                          </FormLabel>
                           <div style={style.inputOutterDiv}>
                             <NumberInput
                               sx={style.numberInput}
                               variant="flushed"
                               value={showValueInt(revenue)}
-                              onChange={(value) => {
-                                setRevenue(value,{scroll:false, shallow: true });
-                              }}>
+                              onChange={value => {
+                                setRevenue(value, {
+                                  scroll: false,
+                                  shallow: true,
+                                });
+                              }}
+                            >
                               <NumberInputField
                                 style={style.numberInputField}
                                 focusBorderColor="black"
-                                _focus={{ borderColor: 'initial', boxShadow: 'initial' }}
+                                _focus={{
+                                  borderColor: 'initial',
+                                  boxShadow: 'initial',
+                                }}
                               />
                             </NumberInput>
-                            <CustomPopover isLargerThan1000={isLargerThan1000} label="revenue" isMeAboveLimit={isMeD1AboveLimit} limit={limit} />
+                            <CustomPopover
+                              isLargerThan1000={isLargerThan1000}
+                              label="revenue"
+                              isMeAboveLimit={isMeD1AboveLimit}
+                              limit={limit}
+                            />
                           </div>
                         </HStack>
                         <HStack sx={style.hStack}>
@@ -802,39 +1036,62 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
                               sx={style.numberInput}
                               variant="flushed"
                               value={showValueInt(expenses)}
-                              onChange={(value) => {
-                                setExpenses(value, {scroll:false, shallow: true });
-                              }}>
+                              onChange={value => {
+                                setExpenses(value, {
+                                  scroll: false,
+                                  shallow: true,
+                                });
+                              }}
+                            >
                               <NumberInputField
-
                                 sx={style.numberInputField}
                                 focusBorderColor="black"
-                                _focus={{ borderColor: 'initial', boxShadow: 'initial' }}
+                                _focus={{
+                                  borderColor: 'initial',
+                                  boxShadow: 'initial',
+                                }}
                               />
                             </NumberInput>
-                            <CustomPopover isLargerThan1000={isLargerThan1000} label="expenses" />
+                            <CustomPopover
+                              isLargerThan1000={isLargerThan1000}
+                              label="expenses"
+                            />
                           </div>
                         </HStack>
                         <HStack
                           display={socialForm !== 'SAS' ? 'none' : 'flex'}
                           sx={{
                             ...style.hStack,
-                          }}>
-                          <FormLabel sx={style.formLabel}>SALAIRE NET</FormLabel>
+                          }}
+                        >
+                          <FormLabel sx={style.formLabel}>
+                            SALAIRE NET
+                          </FormLabel>
                           <div style={style.inputOutterDiv}>
                             <NumberInput
                               sx={style.numberInput}
                               variant="flushed"
                               value={showValueInt(compensation)}
-                              onChange={(value) => setCompensation(value, {scroll:false, shallow:true})}>
+                              onChange={value =>
+                                setCompensation(value, {
+                                  scroll: false,
+                                  shallow: true,
+                                })
+                              }
+                            >
                               <NumberInputField
-
                                 style={style.numberInputField}
                                 focusBorderColor="black"
-                                _focus={{ borderColor: 'initial', boxShadow: 'initial' }}
+                                _focus={{
+                                  borderColor: 'initial',
+                                  boxShadow: 'initial',
+                                }}
                               />
                             </NumberInput>
-                            <CustomPopover isLargerThan1000={isLargerThan1000} label="compensation" />
+                            <CustomPopover
+                              isLargerThan1000={isLargerThan1000}
+                              label="compensation"
+                            />
                           </div>
                         </HStack>
                       </AccordionPanel>
@@ -846,30 +1103,39 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
                     allowToggle
                     index={[isAccordion2D2Open ? 0 : null]}
                     onChange={() => {
-                      setIsAccordion2D2Open((prev) => !prev);
+                      setIsAccordion2D2Open(prev => !prev);
                     }}
-                    sx={style.accordion}>
+                    sx={style.accordion}
+                  >
                     <AccordionItem
                       sx={{
                         backgroundColor: colors.dGray,
                         border: '1px solid',
                         borderRight: !isLargerThan800
                           ? '1px solid'
-                          : !isAccordion3D2Open || (isAccordion3D2Open && isAccordion2D2Open && socialFormD2 === 'ME')
+                          : !isAccordion3D2Open ||
+                            (isAccordion3D2Open &&
+                              isAccordion2D2Open &&
+                              socialFormD2 === 'ME')
                           ? '1px solid'
                           : 'none',
                         boxShadow: isLargerThan800 ? style.boxShadow : 'none',
-                      }}>
+                      }}
+                    >
                       <h2>
                         <AccordionButton>
                           <Box
                             sx={{
                               ...style.accordionButtonBox,
                               color: 'white',
-                            }}>
+                            }}
+                          >
                             Informations Activité
                           </Box>
-                          <AccordionIcon color="white" sx={{ fontSize: '35px' }} />
+                          <AccordionIcon
+                            color="white"
+                            sx={{ fontSize: '35px' }}
+                          />
                         </AccordionButton>
                       </h2>
                       <AccordionPanel sx={style.panel}>
@@ -878,11 +1144,15 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
                           <div style={{ maxWidth: '185px', minWidth: '185px' }}>
                             <Select
                               value={activityD2}
-                              onChange={(e) => {
-                                setActivityD2(e.target.value, {scroll:false, shallow: true });
+                              onChange={e => {
+                                setActivityD2(e.target.value, {
+                                  scroll: false,
+                                  shallow: true,
+                                });
                               }}
                               sx={style.select}
-                              size="md">
+                              size="md"
+                            >
                               <option value="employee">Salariat</option>
                               <option value="freelance">Freelance</option>
                               <option value="other">Chômage</option>
@@ -893,17 +1163,25 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
                         <HStack
                           sx={{
                             ...style.hStack,
-                            display: activityD2 !== 'freelance' ? 'none' : 'flex',
-                          }}>
-                          <FormLabel sx={style.formLabel}>FORME JURIDIQUE</FormLabel>
+                            display:
+                              activityD2 !== 'freelance' ? 'none' : 'flex',
+                          }}
+                        >
+                          <FormLabel sx={style.formLabel}>
+                            FORME JURIDIQUE
+                          </FormLabel>
                           <div style={{ minWidth: '200px', maxWidth: '200px' }}>
                             <Select
                               value={socialFormD2}
-                              onChange={(e) => {
-                                setSocialFormD2(e.target.value, {scroll:false, shallow: true });
+                              onChange={e => {
+                                setSocialFormD2(e.target.value, {
+                                  scroll: false,
+                                  shallow: true,
+                                });
                               }}
                               size="md"
-                              sx={{ border: '1px solid black' }}>
+                              sx={{ border: '1px solid black' }}
+                            >
                               <option value={'ME'}>Micro-Entreprise</option>
                               <option value={'SARL'}>SARL / EURL</option>
                               <option value={'SAS'}>SAS / SASU</option>
@@ -913,41 +1191,78 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
                         <HStack
                           sx={{
                             ...style.hStack,
-                            display: activityD2 !== 'freelance' || socialFormD2 !== 'ME' ? 'none' : 'flex',
-                          }}>
-                          <FormLabel sx={style.formLabel}>TYPE D'ACTIVITE</FormLabel>
+                            display:
+                              activityD2 !== 'freelance' ||
+                              socialFormD2 !== 'ME'
+                                ? 'none'
+                                : 'flex',
+                          }}
+                        >
+                          <FormLabel sx={style.formLabel}>
+                            TYPE D'ACTIVITE
+                          </FormLabel>
                           <div style={style.inputOutterDiv}>
-                            <div style={{ minWidth: '175px', maxWidth: '175px' }}>
+                            <div
+                              style={{ minWidth: '175px', maxWidth: '175px' }}
+                            >
                               <Select
                                 value={isServiceD2}
-                                onChange={(e) => setIsServiceD2(e.target.value === 'true' ? true : false, {scroll:false, shallow: true })}
+                                onChange={e =>
+                                  setIsServiceD2(
+                                    e.target.value === 'true' ? true : false,
+                                    { scroll: false, shallow: true }
+                                  )
+                                }
                                 size="md"
-                                sx={style.select}>
+                                sx={style.select}
+                              >
                                 <option value={false}>Achat-revente</option>
                                 <option value={true}>Autre</option>
                               </Select>
                             </div>
-                            <CustomPopover isLargerThan1000={isLargerThan1000} label="isService" />
+                            <CustomPopover
+                              isLargerThan1000={isLargerThan1000}
+                              label="isService"
+                            />
                           </div>
                         </HStack>
                         <HStack
                           sx={{
                             ...style.hStack,
-                            display: activityD2 !== 'freelance' || socialFormD2 !== 'ME' || !isServiceD2 ? 'none' : 'flex',
-                          }}>
-                          <FormLabel sx={style.formLabel}>ACTIVITE LIBERALE</FormLabel>
+                            display:
+                              activityD2 !== 'freelance' ||
+                              socialFormD2 !== 'ME' ||
+                              !isServiceD2
+                                ? 'none'
+                                : 'flex',
+                          }}
+                        >
+                          <FormLabel sx={style.formLabel}>
+                            ACTIVITE LIBERALE
+                          </FormLabel>
                           <div style={style.inputOutterDiv}>
-                            <div style={{ minWidth: '110px', maxWidth: '110px' }}>
+                            <div
+                              style={{ minWidth: '110px', maxWidth: '110px' }}
+                            >
                               <Select
                                 value={isProfessionalD2}
-                                onChange={(e) => setIsProfessionalD2(e.target.value === 'true' ? true : false, {scroll:false, shallow: true })}
+                                onChange={e =>
+                                  setIsProfessionalD2(
+                                    e.target.value === 'true' ? true : false,
+                                    { scroll: false, shallow: true }
+                                  )
+                                }
                                 size="md"
-                                sx={style.select}>
+                                sx={style.select}
+                              >
                                 <option value={true}>Oui</option>
                                 <option value={false}>Non</option>
                               </Select>
                             </div>
-                            <CustomPopover isLargerThan1000={isLargerThan1000} label="isProfessional" />
+                            <CustomPopover
+                              isLargerThan1000={isLargerThan1000}
+                              label="isProfessional"
+                            />
                           </div>
                         </HStack>
                       </AccordionPanel>
@@ -958,137 +1273,226 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
                     index={[isAccordion3D2Open ? 0 : null]}
                     sx={{ width: '100%' }}
                     onChange={() => {
-                      setIsAccordion3D2Open((prev) => !prev);
-                    }}>
+                      setIsAccordion3D2Open(prev => !prev);
+                    }}
+                  >
                     <AccordionItem
                       sx={{
                         border: '1px solid',
                         borderLeft: !isLargerThan800
                           ? '1px solid'
-                          : (isAccordion2D2Open && socialFormD2 === 'ME' && isAccordion3D2Open) || !isAccordion3D2Open
+                          : (isAccordion2D2Open &&
+                              socialFormD2 === 'ME' &&
+                              isAccordion3D2Open) ||
+                            !isAccordion3D2Open
                           ? 'none'
                           : '1px solid',
                         borderTop: !isLargerThan800 ? 'none' : '1px solid',
                         backgroundColor: colors.dGray,
                         boxShadow: isLargerThan800 ? style.boxShadow : 'none',
-                      }}>
+                      }}
+                    >
                       <h2>
                         <AccordionButton>
-                          <Box sx={{ ...style.accordionButtonBox, color: 'white' }}>Informations Financières</Box>
-                          <AccordionIcon color="white" sx={{ fontSize: '35px' }} />
+                          <Box
+                            sx={{ ...style.accordionButtonBox, color: 'white' }}
+                          >
+                            Informations Financières
+                          </Box>
+                          <AccordionIcon
+                            color="white"
+                            sx={{ fontSize: '35px' }}
+                          />
                         </AccordionButton>
                       </h2>
                       <AccordionPanel sx={style.panel}>
                         <HStack
                           sx={{
                             ...style.hStack,
-                            display: activityD2 !== 'freelance' ? 'none' : 'flex',
-                          }}>
-                          <FormLabel sx={style.formLabel}>CHIFFRE D'AFFAIRES</FormLabel>
+                            display:
+                              activityD2 !== 'freelance' ? 'none' : 'flex',
+                          }}
+                        >
+                          <FormLabel sx={style.formLabel}>
+                            CHIFFRE D'AFFAIRES
+                          </FormLabel>
                           <div style={style.inputOutterDiv}>
                             <NumberInput
                               sx={style.numberInput}
                               variant="flushed"
                               value={showValueInt(revenueD2)}
-                              onChange={(value) => {
-                                setRevenueD2(maxRevenue(2, value), {scroll:false, shallow: true });
-                              }}>
+                              onChange={value => {
+                                setRevenueD2(maxRevenue(2, value), {
+                                  scroll: false,
+                                  shallow: true,
+                                });
+                              }}
+                            >
                               <NumberInputField
-
                                 style={style.numberInputField}
                                 focusBorderColor="black"
-                                _focus={{ borderColor: 'initial', boxShadow: 'initial' }}
+                                _focus={{
+                                  borderColor: 'initial',
+                                  boxShadow: 'initial',
+                                }}
                               />
                             </NumberInput>
-                            <CustomPopover isLargerThan1000={isLargerThan1000} label="revenue" isMeAboveLimit={isMeD2AboveLimit} limit={limit2} />
+                            <CustomPopover
+                              isLargerThan1000={isLargerThan1000}
+                              label="revenue"
+                              isMeAboveLimit={isMeD2AboveLimit}
+                              limit={limit2}
+                            />
                           </div>
                         </HStack>
                         <HStack
                           sx={{
                             ...style.hStack,
-                            display: activityD2 !== 'freelance' ? 'none' : 'flex',
-                          }}>
+                            display:
+                              activityD2 !== 'freelance' ? 'none' : 'flex',
+                          }}
+                        >
                           <FormLabel style={style.formLabel}>CHARGES</FormLabel>
                           <div style={style.inputOutterDiv}>
                             <NumberInput
                               sx={style.numberInput}
                               variant="flushed"
                               value={showValueInt(expensesD2)}
-                              onChange={(value) => setExpensesD2(value, {scroll:false, shallow: true })}>
+                              onChange={value =>
+                                setExpensesD2(value, {
+                                  scroll: false,
+                                  shallow: true,
+                                })
+                              }
+                            >
                               <NumberInputField
-
                                 style={style.numberInputField}
                                 focusBorderColor="black"
-                                _focus={{ borderColor: 'initial', boxShadow: 'initial' }}
+                                _focus={{
+                                  borderColor: 'initial',
+                                  boxShadow: 'initial',
+                                }}
                               />
                             </NumberInput>
-                            <CustomPopover isLargerThan1000={isLargerThan1000} label="expenses" />
+                            <CustomPopover
+                              isLargerThan1000={isLargerThan1000}
+                              label="expenses"
+                            />
                           </div>
                         </HStack>
                         <HStack
                           sx={{
                             ...style.hStack,
-                            display: socialFormD2 === 'SAS' && activityD2 === 'freelance' ? 'flex' : 'none',
-                          }}>
-                          <FormLabel style={style.formLabel}>SALAIRE NET</FormLabel>
+                            display:
+                              socialFormD2 === 'SAS' &&
+                              activityD2 === 'freelance'
+                                ? 'flex'
+                                : 'none',
+                          }}
+                        >
+                          <FormLabel style={style.formLabel}>
+                            SALAIRE NET
+                          </FormLabel>
                           <div style={style.inputOutterDiv}>
                             <NumberInput
                               sx={style.numberInput}
                               variant="flushed"
                               value={showValueInt(compensationD2)}
-                              onChange={(value) => setCompensationD2(value, {scroll: false, shallow: true})}>
+                              onChange={value =>
+                                setCompensationD2(value, {
+                                  scroll: false,
+                                  shallow: true,
+                                })
+                              }
+                            >
                               <NumberInputField
-
                                 sx={style.numberInputField}
                                 focusBorderColor="black"
-                                _focus={{ borderColor: 'initial', boxShadow: 'initial' }}
+                                _focus={{
+                                  borderColor: 'initial',
+                                  boxShadow: 'initial',
+                                }}
                               />
                             </NumberInput>
-                            <CustomPopover isLargerThan1000={isLargerThan1000} label="compensation" />
+                            <CustomPopover
+                              isLargerThan1000={isLargerThan1000}
+                              label="compensation"
+                            />
                           </div>
                         </HStack>
                         <HStack
                           sx={{
                             ...style.hStack,
-                            display: activityD2 === 'employee' ? 'flex' : 'none',
-                          }}>
-                          <FormLabel sx={style.formLabel}>SALAIRE BRUT</FormLabel>
+                            display:
+                              activityD2 === 'employee' ? 'flex' : 'none',
+                          }}
+                        >
+                          <FormLabel sx={style.formLabel}>
+                            SALAIRE BRUT
+                          </FormLabel>
                           <div style={style.inputOutterDiv}>
                             <NumberInput
                               sx={style.numberInput}
                               variant="flushed"
                               value={showValueInt(salaryD2)}
-                              onChange={(value) => setSalaryD2(value, {scroll:false, shallow: true })}>
+                              onChange={value =>
+                                setSalaryD2(value, {
+                                  scroll: false,
+                                  shallow: true,
+                                })
+                              }
+                            >
                               <NumberInputField
-
                                 style={style.numberInputField}
                                 focusBorderColor="black"
-                                _focus={{ borderColor: 'initial', boxShadow: 'initial' }}
+                                _focus={{
+                                  borderColor: 'initial',
+                                  boxShadow: 'initial',
+                                }}
                               />
                             </NumberInput>
-                            <CustomPopover isLargerThan1000={isLargerThan1000} label="salary" />
+                            <CustomPopover
+                              isLargerThan1000={isLargerThan1000}
+                              label="salary"
+                            />
                           </div>
                         </HStack>
                         <HStack
                           sx={{
                             ...style.hStack,
-                            display: activityD2.includes('other') ? 'flex' : 'none',
-                          }}>
-                          <FormLabel sx={style.formLabel}>REVENUS NET IMPOSABLES</FormLabel>
+                            display: activityD2.includes('other')
+                              ? 'flex'
+                              : 'none',
+                          }}
+                        >
+                          <FormLabel sx={style.formLabel}>
+                            REVENUS NET IMPOSABLES
+                          </FormLabel>
                           <div style={style.inputOutterDiv}>
                             <NumberInput
                               sx={style.numberInput}
                               variant="flushed"
                               value={showValueInt(netIncomeD2)}
-                              onChange={(value) => setNetIncomeD2(value, {scroll:false, shallow: true })}>
+                              onChange={value =>
+                                setNetIncomeD2(value, {
+                                  scroll: false,
+                                  shallow: true,
+                                })
+                              }
+                            >
                               <NumberInputField
-
                                 sx={style.numberInputField}
                                 focusBorderColor="black"
-                                _focus={{ borderColor: 'initial', boxShadow: 'initial' }}
+                                _focus={{
+                                  borderColor: 'initial',
+                                  boxShadow: 'initial',
+                                }}
                               />
                             </NumberInput>
-                            <CustomPopover isLargerThan1000={isLargerThan1000} label="netIncome" />
+                            <CustomPopover
+                              isLargerThan1000={isLargerThan1000}
+                              label="netIncome"
+                            />
                           </div>
                         </HStack>
                       </AccordionPanel>
