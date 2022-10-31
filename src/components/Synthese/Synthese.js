@@ -41,7 +41,7 @@ export const Synthese = ({ results, colors }) => {
       justifyContent: 'center',
       alignItems: 'center',
       width: '95%',
-      minWidth: '350px',
+      minWidth: '340px',
       maxWidth: '487px',
     },
     corpSynthesises: {
@@ -265,20 +265,24 @@ export const Synthese = ({ results, colors }) => {
           style={{
             ...style.category,
             backgroundColor: lGray,
-          }}>
-          <h3
+          }}
+        >
+          <h2
             style={{
               ...style.categoryTitle,
               fontSize: '1.2rem',
-            }}>
+            }}
+          >
             Total des prélèvements obligatoires
-          </h3>
-
+          </h2>
+          {/* //https://wave.webaim.org/report#/https://decodage-fiscal.fr
+           */}{' '}
           <div
             style={{
               ...style.lineDiv,
               border: 'none',
-            }}>
+            }}
+          >
             <div style={style.amountDiv}>
               <p>(Cotisations + Impôt)</p>
               <p>{!isResults ? '- €' : format(cotisations + IR) + ' €'}</p>
@@ -286,7 +290,8 @@ export const Synthese = ({ results, colors }) => {
             <p
               style={{
                 ...style.percentage,
-              }}>
+              }}
+            >
               {!isResults ? '- %' : getPercentage(cotisations + IR) + '%'}
             </p>
           </div>
@@ -300,7 +305,7 @@ export const Synthese = ({ results, colors }) => {
             ...style.category,
             backgroundColor: lGray,
           }}>
-          <h3
+          <h2
             style={{
               color: colors.dBlue,
               textAlign: 'center',
@@ -308,7 +313,7 @@ export const Synthese = ({ results, colors }) => {
               fontSize: '1.2rem',
             }}>
             Total des prélèvements obligatoires
-          </h3>
+          </h2>
 
           <div
             style={{

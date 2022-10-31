@@ -123,7 +123,7 @@ export const NavBar = ({ colors, setResults }) => {
             setResults({});
           }}>
           <div className="logoImagesContainer" style={style.logoImageContainer}>
-            <Image style={style.logoImg} src={logo} alt="logo" />
+            <Image style={style.logoImg} src={logo} alt="logo du site" />
           </div>
           <div className="logoDivider" style={style.logoDivider}></div>
           <h1 className="bold" style={style.logoText}>
@@ -131,9 +131,9 @@ export const NavBar = ({ colors, setResults }) => {
           </h1>
         </div>
       </Link>
-      <Box className="burgerMenuContainer" role="menu" sx={style.burgerMenuContainer} aria-label="Menu">
+      <Box className="burgerMenuContainer" sx={style.burgerMenuContainer}>
         <Menu placement="left-start">
-          <MenuButton className="menuButton" as={IconButton} icon={<HamburgerIcon sx={{ fontSize: '40px' }} />} variant="unstyled"></MenuButton>
+          <MenuButton aria-label='Options'className="menuButton" as={IconButton} icon={<HamburgerIcon sx={{ fontSize: '40px' }} />} variant="unstyled"></MenuButton>
           <MenuList p={0}>
             <Link href="/impot_definition">
               <MenuItem

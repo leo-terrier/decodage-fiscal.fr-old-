@@ -518,12 +518,12 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
               focusBorderColor="black"
               min={0}>
               <NumberInputField
-                allowmousewheel="false"
+
                 sx={{
                   ...style.numberInputField,
                   paddingRight: '34px',
                 }}
-                focusBorderColor="none"
+                focusBorderColor="black"
                 _focus={{ borderColor: 'initial', boxShadow: 'initial' }}
               />
               <NumberInputStepper>
@@ -597,17 +597,17 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
                         variant="flushed"
                         value={nbOfChildren}
                         onChange={(value) => setNbOfChildren(value, {scroll:false, shallow: true })}
-                        focusBorderColor="none"
+                        focusBorderColor="black"
                         min={0}>
                         <NumberInputField
-                          allowmousewheel="false"
+
                           sx={{
                             ...style.numberInputField,
                             paddingRight: '34px',
                             boxShadow: 'none',
                             width: '70px',
                           }}
-                          focusBorderColor="none"
+                          focusBorderColor="black"
                           _focus={{ borderColor: 'initial', boxShadow: 'initial' }}
                         />
                         <NumberInputStepper>
@@ -787,7 +787,6 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
                                 setRevenue(value,{scroll:false, shallow: true });
                               }}>
                               <NumberInputField
-                                allowMouseWheel="false"
                                 style={style.numberInputField}
                                 focusBorderColor="black"
                                 _focus={{ borderColor: 'initial', boxShadow: 'initial' }}
@@ -807,7 +806,7 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
                                 setExpenses(value, {scroll:false, shallow: true });
                               }}>
                               <NumberInputField
-                                allowMouseWheel="false"
+
                                 sx={style.numberInputField}
                                 focusBorderColor="black"
                                 _focus={{ borderColor: 'initial', boxShadow: 'initial' }}
@@ -829,7 +828,7 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
                               value={showValueInt(compensation)}
                               onChange={(value) => setCompensation(value, {scroll:false, shallow:true})}>
                               <NumberInputField
-                                allowMouseWheel="false"
+
                                 style={style.numberInputField}
                                 focusBorderColor="black"
                                 _focus={{ borderColor: 'initial', boxShadow: 'initial' }}
@@ -995,7 +994,7 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
                                 setRevenueD2(maxRevenue(2, value), {scroll:false, shallow: true });
                               }}>
                               <NumberInputField
-                                allowMouseWheel="false"
+
                                 style={style.numberInputField}
                                 focusBorderColor="black"
                                 _focus={{ borderColor: 'initial', boxShadow: 'initial' }}
@@ -1017,7 +1016,7 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
                               value={showValueInt(expensesD2)}
                               onChange={(value) => setExpensesD2(value, {scroll:false, shallow: true })}>
                               <NumberInputField
-                                allowMouseWheel="false"
+
                                 style={style.numberInputField}
                                 focusBorderColor="black"
                                 _focus={{ borderColor: 'initial', boxShadow: 'initial' }}
@@ -1039,7 +1038,7 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
                               value={showValueInt(compensationD2)}
                               onChange={(value) => setCompensationD2(value, {scroll: false, shallow: true})}>
                               <NumberInputField
-                                allowMouseWheel="false"
+
                                 sx={style.numberInputField}
                                 focusBorderColor="black"
                                 _focus={{ borderColor: 'initial', boxShadow: 'initial' }}
@@ -1061,7 +1060,7 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
                               value={showValueInt(salaryD2)}
                               onChange={(value) => setSalaryD2(value, {scroll:false, shallow: true })}>
                               <NumberInputField
-                                allowMouseWheel="false"
+
                                 style={style.numberInputField}
                                 focusBorderColor="black"
                                 _focus={{ borderColor: 'initial', boxShadow: 'initial' }}
@@ -1083,7 +1082,7 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
                               value={showValueInt(netIncomeD2)}
                               onChange={(value) => setNetIncomeD2(value, {scroll:false, shallow: true })}>
                               <NumberInputField
-                                allowMouseWheel="false"
+
                                 sx={style.numberInputField}
                                 focusBorderColor="black"
                                 _focus={{ borderColor: 'initial', boxShadow: 'initial' }}

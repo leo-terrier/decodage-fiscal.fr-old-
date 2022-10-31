@@ -65,7 +65,7 @@ export default function impot_definition({ colors }) {
           d'une année par une personne dépassent un certain montant, la personne devra payer de l'impôt sur le revenu au titre de cette année.
         </p>
         <p>
-          <em>L'impôt sur le revenu a pour de financer les services publics comme l'éducation, les gares, l'armée...</em>
+          <em>L'impôt sur le revenu a pour but de financer les services publics comme l'éducation, les gares, l'armée...</em>
         </p>
 
         <Box
@@ -145,7 +145,7 @@ export default function impot_definition({ colors }) {
         <p className="small">
           <em>
             Ainsi, le fait de <Bold>laisser de l'argent</Bold> sur un compte, <Bold>de revendre un véhicule</Bold> sans plus-value ou encore
-            <Bold> d’obtenir un remboursement</Bold> de prêt prêt ne déclenchent pas d'imposition, faute d'enrichissement.
+            <Bold> d’obtenir un remboursement</Bold> de prêt ne déclenchent pas d'imposition, faute d'enrichissement.
           </em>
         </p>
 

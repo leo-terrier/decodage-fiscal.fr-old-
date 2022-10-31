@@ -19,7 +19,7 @@ export const TJM = ({ CA }) => {
         Tarif Journalier Moyen (TJM)<nobr> :{' '}
         {nbOfWeeks > 0 && CA ? format(CA / (5 * nbOfWeeks)) : '-'} €</nobr>
       </p>
-
+    <form>
       <p style={{ textAlign: 'center', fontSize: '1.2rem' }}>
         Sur une base de{' '}
         <input
@@ -32,7 +32,8 @@ export const TJM = ({ CA }) => {
           style={{ width: '40px', border: '1px solid', textAlign: 'center' }}
         />{' '}
         semaines travaillées annuellement.
-      </p>
+        </p>
+        </form>
     </section>
   );
 };
