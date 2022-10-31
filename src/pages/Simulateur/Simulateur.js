@@ -10,7 +10,7 @@ import { SituationFiscalCorp } from '../../components/Synthese/SituationFoyerSAS
 import { Synthese } from '../../components/Synthese/Synthese';
 import { TJM } from '../../components/TJM/TJM';
 
-export const Simulateur = ({ colors, results, setResults }) => {
+export const Simulateur = ({ colors, results, setResults, tabIndex, setTabIndex }) => {
   const [loadingDoubleSASComp, setLoadingDoubleSASComp] = useState(false);
   const [isLargerThan1050] = useMediaQuery('(min-width: 1050px)');
   const [isLargerThan1000] = useMediaQuery('(min-width: 1000px)');
@@ -134,7 +134,7 @@ export const Simulateur = ({ colors, results, setResults }) => {
   return (
     <div className="simulationPage" style={style.simulationPage}>
       <div className="formDiv" style={style.formDiv}>
-        <Form setResults={setResults} colors={colors} setLoadingDoubleSASComp={setLoadingDoubleSASComp} />
+        <Form setResults={setResults} colors={colors} setLoadingDoubleSASComp={setLoadingDoubleSASComp} setTabIndex={setTabIndex} tabIndex={tabIndex}/>
       </div>
       <div className="divider" style={style.divider}></div>
       <div className="innerResultDiv" style={style.innerResultDiv}>

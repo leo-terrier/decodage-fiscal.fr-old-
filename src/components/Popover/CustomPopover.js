@@ -14,10 +14,35 @@ const content = (label) => {
       return (
         <div>
           <p style={styleP}>
-            Il peut tout d'abord s'agir <Bold> des enfants mineurs dont vous avez la charge</Bold>.
+            Il peut tout d'abord s'agir{' '}
+            <Bold> des enfants mineurs dont vous avez la charge</Bold>.
           </p>
           <p style={styleP}>
-            Il peut par ailleurs s'agir des enfants <Bold>de moins de 25 ans, toujours étudiant, et rattachés à votre foyer fiscal</Bold> (<a href="https://www.impots.gouv.fr/particulier/questions/mon-enfant-est-majeur-comment-le-declarer#:~:text=de%20vos%20revenus.-,Le%20rattachement,ou%20au%2031%20d%C3%A9cembre%202021." style={{textDecoration: "underline"}}>plus d'information</a>).
+            Il peut par ailleurs s'agir des enfants{' '}
+            <Bold>
+              de moins de 25 ans, toujours étudiant, et rattachés à votre foyer
+              fiscal
+            </Bold>{' '}
+            (
+            <a
+              href="https://www.impots.gouv.fr/particulier/questions/mon-enfant-est-majeur-comment-le-declarer#:~:text=de%20vos%20revenus.-,Le%20rattachement,ou%20au%2031%20d%C3%A9cembre%202021."
+              style={{ textDecoration: 'underline' }}
+            >
+              plus d'information
+            </a>
+            ).
+          </p>
+          <p style={styleP}>
+            Enfin, les enfants ne sont pas les seuls à être pris en
+            considération dans le quotien familial, vous pouvez également
+            intégrer toute personne majeure dont vous avez la charge (
+            <a
+              href="https://www.impots.gouv.fr/particulier/autres-personnes-charge#:~:text=Vous%20pouvez%20compter%20%C3%A0%20charge,ou%20de%20la%20CMI-invalidit%C3%A9."
+              style={{ textDecoration: 'underline' }}
+            >
+              plus d'information
+            </a>
+            ).
           </p>
         </div>
       );

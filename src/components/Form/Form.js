@@ -31,7 +31,8 @@ let limit2 = 0;
 let expenseAboveD1 = false;
 let expenseAboveD2 = false;
 
-export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
+export const Form = ({ tabIndex, setTabIndex, setResults, colors, setLoadingDoubleSASComp }) => {
+
   const [isMarried, setIsMarried] = useQueryState(
     'isMarried',
     queryTypes.boolean.withDefault(false)
@@ -106,7 +107,6 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
   const [isMeD1AboveLimit, setIsMeD1AboveLimit] = useState(false);
   const [isMeD2AboveLimit, setIsMeD2AboveLimit] = useState(false);
 
-  const [tabIndex, setTabIndex] = useState(0);
   const [isAccordion1Open, setIsAccordion1Open] = useState(false);
   const [isAccordion2Open, setIsAccordion2Open] = useState(false);
   const [isAccordion3Open, setIsAccordion3Open] = useState(false);
@@ -364,6 +364,10 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
       }
 
       const validator = (str, state, setter) => {
+        if (str === "revenueD2") {
+          console.log(payload[str] !== state)
+          console.log('payload[str] !== state')
+        }
         if (payload[str] !== state) {
           setAutoModified(true);
           setter(payload[str], { scroll: false, shallow: true });
@@ -397,8 +401,10 @@ export const Form = ({ setResults, colors, setLoadingDoubleSASComp }) => {
       setAutoModified(false);
     }
   };
+  console.log(tabIndex)
 
   useEffect(() => {
+
     const abortCtrl = new AbortController();
     const opts = { signal: abortCtrl.signal };
 

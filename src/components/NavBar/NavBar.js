@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import logo from '../../../public/img/logo.png';
 
-export const NavBar = ({ colors, setResults }) => {
+export const NavBar = ({ colors, setResults, setTabIndex }) => {
   const [isLargerThan1000] = useMediaQuery('(min-width: 1000px)');
   const [isLargerThan500] = useMediaQuery('(min-width: 500px)');
 
@@ -120,6 +120,7 @@ export const NavBar = ({ colors, setResults }) => {
           style={style.logoContainer}
           className="logoContainer"
           onClick={() => {
+            setTabIndex(0)
             setResults({});
           }}>
           <div className="logoImagesContainer" style={style.logoImageContainer}>

@@ -3,7 +3,11 @@ import React, { useState } from 'react';
 import '../App.css';
 import { NavBar } from '../src/components/NavBar/NavBar.js';
 export default function MyApp({ Component /* , pageProps */ }) {
+
   const [results, setResults] = useState({});
+
+  //simulateur single/married tab //
+  const [tabIndex, setTabIndex] = useState(0);
 
   const colors = {
     dBlue: '#2D3142',
@@ -58,7 +62,7 @@ export default function MyApp({ Component /* , pageProps */ }) {
   });
   return (
     <ChakraProvider theme={theme}>
-      <NavBar colors={colors} setResults={setResults} />
+      <NavBar colors={colors} setResults={setResults} setTabIndex={setTabIndex} />
       <chakra.main
         width={{ xs: '95%', vs: '92%', md: '88%', lg: '80%', xl: '75%' }}
         sx={{
@@ -71,7 +75,7 @@ export default function MyApp({ Component /* , pageProps */ }) {
           borderTop: 'none',
         }}
         p={{ xs: '5vh 0 7vh 0', sm: '7vh 0 9vh 0' }}>
-        <Component /* {...pageProps} */ colors={colors} results={results} setResults={setResults} />
+        <Component /* {...pageProps} */ colors={colors} results={results} setResults={setResults} setTabIndex={setTabIndex} tabIndex={tabIndex} />
       </chakra.main>
     </ChakraProvider>
   );
