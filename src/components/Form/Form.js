@@ -18,7 +18,7 @@ import {
   TabPanel,
   TabPanels,
   Tabs,
-  useMediaQuery
+  useMediaQuery,
 } from '@chakra-ui/react';
 
 import { queryTypes, useQueryState } from 'next-usequerystate';
@@ -31,8 +31,13 @@ let limit2 = 0;
 let expenseAboveD1 = false;
 let expenseAboveD2 = false;
 
-export const Form = ({ tabIndex, setTabIndex, setResults, colors, setLoadingDoubleSASComp }) => {
-
+export const Form = ({
+  tabIndex,
+  setTabIndex,
+  setResults,
+  colors,
+  setLoadingDoubleSASComp,
+}) => {
   const [isMarried, setIsMarried] = useQueryState(
     'isMarried',
     queryTypes.boolean.withDefault(false)
@@ -364,10 +369,10 @@ export const Form = ({ tabIndex, setTabIndex, setResults, colors, setLoadingDoub
       }
 
       const validator = (str, state, setter) => {
-        if (str === "revenueD2") {
-          console.log(payload[str] !== state)
-          console.log('payload[str] !== state')
-        }
+       /*  if (str === 'revenueD2') {
+          console.log(payload[str] !== state);
+          console.log('payload[str] !== state');
+        } */
         if (payload[str] !== state) {
           setAutoModified(true);
           setter(payload[str], { scroll: false, shallow: true });
@@ -383,28 +388,26 @@ export const Form = ({ tabIndex, setTabIndex, setResults, colors, setLoadingDoub
       validator('expensesD2', expensesD2, setExpensesD2);
       setLoadingDoubleSASComp(false);
       setResults({ ...responseJson });
-    }
 
-    if (socialForm !== 'SAS' && compensation) {
-      setCompensation(0, { scroll: false, shallow: true });
-    }
-    if (
-      (socialFormD2 !== 'SAS' || !isMarried || activityD2 !== 'freelance') &&
-      compensationD2
-    ) {
-      setCompensationD2(0, { scroll: false, shallow: true });
-    }
-    if (
-      (socialForm === 'SAS' && expenseAboveD1) ||
-      (socialFormD2 === 'SAS' && expenseAboveD2)
-    ) {
-      setAutoModified(false);
+      if (socialForm !== 'SAS' && compensation) {
+        setCompensation(0, { scroll: false, shallow: true });
+      }
+      if (
+        (socialFormD2 !== 'SAS' || !isMarried || activityD2 !== 'freelance') &&
+        compensationD2
+      ) {
+        setCompensationD2(0, { scroll: false, shallow: true });
+      }
+      if (
+        (socialForm === 'SAS' && expenseAboveD1) ||
+        (socialFormD2 === 'SAS' && expenseAboveD2)
+      ) {
+        setAutoModified(false);
+      }
     }
   };
-  console.log(tabIndex)
 
   useEffect(() => {
-
     const abortCtrl = new AbortController();
     const opts = { signal: abortCtrl.signal };
 
@@ -634,7 +637,7 @@ export const Form = ({ tabIndex, setTabIndex, setResults, colors, setLoadingDoub
             </FormLabel>
             <NumberInput
               keepWithinRange={true}
-              bg='white'
+              bg="white"
               sx={{
                 ...style.numberInput,
                 width: '70px',

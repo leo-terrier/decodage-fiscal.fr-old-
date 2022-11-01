@@ -152,6 +152,7 @@ export const NavBar = ({ colors, setResults, setTabIndex }) => {
                 justifyContent="center"
                 sx={style.burgerMenuListItems}
                 onClick={() => {
+                  setTabIndex(0);
                   setResults({});
                 }}>
                 Simulateurs
@@ -197,6 +198,7 @@ export const NavBar = ({ colors, setResults, setTabIndex }) => {
             sx={style.menuButton}
             _hover={style.menuButtonHover}
             onClick={() => {
+              setTabIndex(0);
               setResults({});
             }}>
             Simulateurs
