@@ -2,11 +2,11 @@
 
 ![Logo](public/logo-og.png?raw=true "Logo")
 
-**Objective** (EN): The main objective behind this website was to create a simple and intuitive (but yet, precise) tax simulator for freelancers, to help theme find the most suitable entity type for their business.
+**Objective** (EN): The main objective behind this website was to create a simple and intuitive (but yet, precise) tax simulator for freelancers, to help them find the most suitable entity type for their business.
 
 **Objectif** (FR): L'objectif principal derrière ce site était la création d'un simulateur fiscal pour freelance, qui soit à la fois simple, précis, et intuitif, afin de les aider dans le choix du statut.
 
-Le calcul de l'impôt et des cotisations provient directement des textes de lois applicables (les données sont fiables).
+Le calcul de l'impôt et des cotisations provient directement des textes de loi applicables (les données sont fiables).
 
 ## Principaux outils (stack technique)
 
@@ -45,7 +45,7 @@ Un onglet partage permettant de copier dans le presse-papier et/ou de partager l
 <a href="https://github.com/leo-terrier/decodage-fiscal.fr"> Lien du repository GitHub</a>
 
 
-### Screenshots
+## Screenshots
 ![screenshot](screenshots/screen6.png?raw=true "screenshot")
 ![screenshot](screenshots/screen5.png?raw=true "screenshot")
 <div style="margin-top:200px; display: flex; justify-content: space-between">
