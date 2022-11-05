@@ -18,6 +18,7 @@ import {
   TabPanel,
   TabPanels,
   Tabs,
+  Text,
   useMediaQuery,
 } from '@chakra-ui/react';
 
@@ -453,9 +454,9 @@ export const Form = ({
       alignSelf: 'center',
       marginBottom: !isLargerThan1215
         ? 0
-        : isLargerThan1215 && isMarried
+        : /* isLargerThan1215 && isMarried
         ? '95px'
-        : '70px',
+        : */ '78px',
       borderBottom: 'none',
     },
     title: {
@@ -601,7 +602,7 @@ export const Form = ({
             Simulateur fiscal pour freelance
           </h1>
         </div>
-
+        <Text textAlign={isLargerThan800 ? "left" : "center"} mb={isLargerThan1215 ? "30px": 0} mt={!isLargerThan1215 ? "62px": 0} sx={{fontFamily:"Poppins", color: colors.dBlue, fontWeight:"600", fontSize:"1.2rem" }}>Veuillez remplir le formulaire <nobr>suivant : </nobr></Text>
         <div style={style.foyerSection}>
           <h2 style={style.foyerSectionTitle}>Informations foyer</h2>
           <HStack sx={style.HStackFoyer}>
