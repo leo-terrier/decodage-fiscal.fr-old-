@@ -1,4 +1,4 @@
-#  Project 2 : décodage-fiscal.fr (FR):
+#  Décodage-fiscal.fr (FR):
 
 ![Logo](public/logo-og.png?raw=true "Logo")
 
@@ -42,8 +42,6 @@ Le Tarif Journalier Moyen à facturer est calculé, avec possibilité d'ajuster 
 Un onglet partage permettant de copier dans le presse-papier et/ou de partager le lien de la simulation a été ajouté.
 
 <a href="https://decodage-fiscal.fr/"> Lien du déploiement </a><br/>
-<a href="https://github.com/leo-terrier/decodage-fiscal.fr"> Lien du repository GitHub</a>
-
 
 ## Screenshots
 ![screenshot](screenshots/screen6.png?raw=true "screenshot")
