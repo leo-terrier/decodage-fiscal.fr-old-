@@ -19,7 +19,7 @@ import {
   TabPanels,
   Tabs,
   Text,
-  useMediaQuery,
+  useMediaQuery
 } from '@chakra-ui/react';
 
 import { queryTypes, useQueryState } from 'next-usequerystate';
@@ -476,12 +476,12 @@ export const Form = ({
       alignItems: 'center',
       margin:
         isMarried && isLargerThan800
-          ? '62px auto 95px auto'
+          ? '42px auto 95px auto'
           : !isMarried && isLargerThan800
-          ? '62px auto 52px auto'
+          ? '42px auto 52px auto'
           : isMarried && !isLargerThan800
-          ? '62px auto 115px auto'
-          : '62px auto 45px auto',
+          ? '42px auto 115px auto'
+          : '42px auto 45px auto',
       backgroundColor: 'rgba(251, 218, 204, .5)',
       borderRadius: '10px',
       color: colors.dBlue,
@@ -602,7 +602,7 @@ export const Form = ({
             Simulateur fiscal pour freelance
           </h1>
         </div>
-        <Text textAlign={isLargerThan800 ? "left" : "center"} mb={isLargerThan1215 ? "30px": 0} mt={!isLargerThan1215 ? "62px": 0} sx={{fontFamily:"Poppins", color: colors.dBlue, fontWeight:"600", fontSize:"1.2rem" }}>Veuillez remplir le formulaire <nobr>suivant : </nobr></Text>
+        <Text m={isLargerThan800 ? "initial" : "0 auto"} mb={isLargerThan1215 ? "30px": 0} mt={!isLargerThan1215 ? "62px": 0} sx={{fontFamily:"Poppins", color: colors.dBlue, fontWeight:"600", fontSize:"1.2rem" }}>Veuillez remplir le formulaire <nobr>suivant : </nobr></Text>
         <div style={style.foyerSection}>
           <h2 style={style.foyerSectionTitle}>Informations foyer</h2>
           <HStack sx={style.HStackFoyer}>

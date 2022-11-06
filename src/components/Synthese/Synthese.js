@@ -3,9 +3,7 @@ import { format } from '../../util/helper';
 
 export const Synthese = ({ results, colors }) => {
   const [isLargerThan1000] = useMediaQuery('(min-width: 1000px)');
-
   const isResults = Object.keys(results).length;
-
   const { dBlue, lGray, paleGreen } = colors;
 
   const {
