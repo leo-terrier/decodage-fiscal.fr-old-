@@ -15,7 +15,7 @@ Le calcul de l'impôt et des cotisations provient directement des textes de loi 
 **Server** : Node, AWS Lambda
 
 ## Fonctionnalités
-Le simulateur commporte une partie fomulaire et une partie résultat qui sont toutes les deux dynamiques : elles évoluent lorsque des champs du formulaire sont remplis.
+Le simulateur comporte une partie fomulaire et une partie résultat qui sont toutes les deux dynamiques : elles évoluent lorsque des champs du formulaire sont remplis.
 
 ### Le formulaire
 L'utilisateur accède à un formulaire comportant 3 ou 5 rubriques principales (selon qu'il est marié ou non). Les rubriques comportent des infobulles permettant d'aider au remplissage des informations.
