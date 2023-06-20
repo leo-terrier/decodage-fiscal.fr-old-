@@ -1,4 +1,5 @@
 const nextConfig = {
+  output: 'export',
   reactStrictMode: true,
   swcMinify: false,
   images: {
@@ -7,4 +8,4 @@ const nextConfig = {
   trailingSlash: true,
 };
 
-module.exports = process.env.NODE_ENV ? nextConfig : {};
+module.exports = nextConfig;
