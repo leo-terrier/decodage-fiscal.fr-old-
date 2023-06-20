@@ -23,7 +23,7 @@ export const Synthese = ({ results, colors }) => {
     IRD2,
   } = results;
 
-  const getPercentage = (value) => {
+  const getPercentage = value => {
     if (value < CA) {
       return ((value / CA) * 100).toFixed(2);
     } else {
@@ -55,7 +55,8 @@ export const Synthese = ({ results, colors }) => {
       fontFamily: 'Nunito Sans',
       padding: '10px 15px',
       color: dBlue,
-      boxShadow: 'rgba(0, 0, 0, 0.1) 1px 4px 6px -1px, rgba(0, 0, 0, 0.06) 1px 2px 4px -1px',
+      boxShadow:
+        'rgba(0, 0, 0, 0.1) 1px 4px 6px -1px, rgba(0, 0, 0, 0.06) 1px 2px 4px -1px',
     },
     category: {
       width: '100%',
@@ -65,7 +66,8 @@ export const Synthese = ({ results, colors }) => {
       padding: '10px 15px',
       marginTop: !isResults || socialForm !== 'SARL' ? '34px' : '26px',
       color: dBlue,
-      boxShadow: 'rgba(0, 0, 0, 0.1) 1px 4px 6px -1px, rgba(0, 0, 0, 0.06) 1px 2px 4px -1px',
+      boxShadow:
+        'rgba(0, 0, 0, 0.1) 1px 4px 6px -1px, rgba(0, 0, 0, 0.06) 1px 2px 4px -1px',
     },
     categoryTitle: {
       color: dBlue,
@@ -119,10 +121,20 @@ export const Synthese = ({ results, colors }) => {
   };
 
   const tauxGlobalImpot = () => {
-    if (!((results.IR + results.IRD2) / (results.revenuImposable + results.revenuImposableD2) > 0)) {
+    if (
+      !(
+        (results.IR + results.IRD2) /
+          (results.revenuImposable + results.revenuImposableD2) >
+        0
+      )
+    ) {
       return 0;
     } else {
-      return (((results.IR + results.IRD2) / (results.revenuImposable + results.revenuImposableD2)) * 100).toFixed(2);
+      return (
+        ((results.IR + results.IRD2) /
+          (results.revenuImposable + results.revenuImposableD2)) *
+        100
+      ).toFixed(2);
     }
   };
 
@@ -133,7 +145,8 @@ export const Synthese = ({ results, colors }) => {
         style={{
           ...style.categoryTop,
           backgroundColor: colors.xxlBlueGray,
-        }}>
+        }}
+      >
         <h2 style={{ ...style.categoryTitle, fontSize: '1.4rem' }}>Résultat</h2>
         <div style={style.lineContainingDiv}>
           <div style={style.lineDiv}>
@@ -178,19 +191,24 @@ export const Synthese = ({ results, colors }) => {
 
   const SituationFiscaleDefault = () => {
     return (
-      <section className="foyer" style={{ ...style.category, backgroundColor: paleGreen }}>
+      <section
+        className="foyer"
+        style={{ ...style.category, backgroundColor: paleGreen }}
+      >
         <h2
           style={{
             ...style.categoryTitle,
             fontSize: '1.2rem',
-          }}>
+          }}
+        >
           Situation fiscale
         </h2>
         <div
           style={{
             ...style.lineImpot,
             fontWeight: 700,
-          }}>
+          }}
+        >
           <p>Taux global d'imposition</p>
           <p>- %</p>
         </div>
@@ -212,8 +230,12 @@ export const Synthese = ({ results, colors }) => {
         style={{
           ...style.categoryTop,
           backgroundColor: colors.xxlBlueGray,
-        }}>
-        <h2 style={{ ...style.categoryTitle, fontSize: '1.4rem' }}> Résultat</h2>
+        }}
+      >
+        <h2 style={{ ...style.categoryTitle, fontSize: '1.4rem' }}>
+          {' '}
+          Résultat
+        </h2>
         <div style={style.lineContainingDiv}>
           <div style={style.lineDiv}>
             <div style={style.amountDiv}>
@@ -248,7 +270,9 @@ export const Synthese = ({ results, colors }) => {
               <p style={style.revenuNet}>Revenu net</p>
               <p style={style.revenuNet}>{format(revenuNet)} €</p>
             </div>
-            <p style={{ ...style.percentage, ...style.revenuNet }}>{getPercentage(revenuNet)}%</p>
+            <p style={{ ...style.percentage, ...style.revenuNet }}>
+              {getPercentage(revenuNet)}%
+            </p>
           </div>
         </div>
       </section>
@@ -273,7 +297,7 @@ export const Synthese = ({ results, colors }) => {
           >
             Total des prélèvements obligatoires
           </h2>
-          {/* //https://wave.webaim.org/report#/https://decodage-fiscal.fr
+          {/* //https://wave.webaim.org/report#/https://decodage-fiscal-netlify.netlify.app/
            */}{' '}
           <div
             style={{
@@ -302,14 +326,16 @@ export const Synthese = ({ results, colors }) => {
           style={{
             ...style.category,
             backgroundColor: lGray,
-          }}>
+          }}
+        >
           <h2
             style={{
               color: colors.dBlue,
               textAlign: 'center',
               fontWeight: 700,
               fontSize: '1.2rem',
-            }}>
+            }}
+          >
             Total des prélèvements obligatoires
           </h2>
 
@@ -319,7 +345,8 @@ export const Synthese = ({ results, colors }) => {
               border: 'none',
               fontSize: CA > 999999 ? '.89rem' : '.92rem',
               justifyContent: 'space-between',
-            }}>
+            }}
+          >
             <p>(Cotisation + IS + Impôt + Flat tax)</p>
             <p>{format(cotisations + IR + flatTax + IS) + '€'}</p>
 
@@ -332,25 +359,35 @@ export const Synthese = ({ results, colors }) => {
 
   const SituationFiscaleMESARL = () => {
     return (
-      <section className="foyer" style={{ ...style.category, backgroundColor: paleGreen }}>
+      <section
+        className="foyer"
+        style={{ ...style.category, backgroundColor: paleGreen }}
+      >
         <h2
           style={{
             ...style.categoryTitle,
             fontSize: '1.2rem',
-          }}>
+          }}
+        >
           Situation fiscale
         </h2>
         <div
           style={{
             ...style.lineImpot,
             fontWeight: 700,
-          }}>
+          }}
+        >
           <p>Taux global d'imposition</p>
           <p>{tauxGlobalImpot()}%</p>
         </div>
         <div style={style.lineImpot}>
           <p>Revenus nets imposables {isMarried && 'du foyer'}</p>
-          <p>{isMarried ? format(revenuImposable + revenuImposableD2) : format(revenuImposable)} €</p>
+          <p>
+            {isMarried
+              ? format(revenuImposable + revenuImposableD2)
+              : format(revenuImposable)}{' '}
+            €
+          </p>
         </div>
         <div style={style.lineImpot}>
           <p>Impôt</p>
@@ -391,8 +428,11 @@ export const Synthese = ({ results, colors }) => {
             ...style.categoryTop,
             backgroundColor: colors.xxlBlueGray,
             width: '100%',
-          }}>
-          <h2 style={{ ...style.categoryTitle, fontSize: '1.3rem' }}>Résultat de la société</h2>
+          }}
+        >
+          <h2 style={{ ...style.categoryTitle, fontSize: '1.3rem' }}>
+            Résultat de la société
+          </h2>
 
           <div style={style.lineContainingDiv}>
             <div style={style.lineDiv}>
@@ -427,11 +467,17 @@ export const Synthese = ({ results, colors }) => {
               style={{
                 ...style.lineDiv,
                 borderBottom: 'none',
-              }}>
+              }}
+            >
               <div style={style.amountDiv}>
                 <p style={style.revenuPBold}>Résultat net comptable</p>
                 <p style={style.revenuPBold}>
-                  {format(Math.abs(CA - charges - cotisations - remuneration) < 2 ? 0 : CA - charges - cotisations - remuneration)} €
+                  {format(
+                    Math.abs(CA - charges - cotisations - remuneration) < 2
+                      ? 0
+                      : CA - charges - cotisations - remuneration
+                  )}{' '}
+                  €
                 </p>
               </div>
               <p style={{ ...style.percentage, ...style.revenuPBold }}>0%</p>
@@ -443,8 +489,11 @@ export const Synthese = ({ results, colors }) => {
             ...style.category,
             backgroundColor: colors.xxlBlueGray,
             width: '100%',
-          }}>
-          <h2 style={{ ...style.categoryTitle, fontSize: '1.3rem' }}>Résultat du freelance</h2>
+          }}
+        >
+          <h2 style={{ ...style.categoryTitle, fontSize: '1.3rem' }}>
+            Résultat du freelance
+          </h2>
           <div style={style.lineContainingDiv}>
             <div style={{ ...style.lineDivMinus, fontStyle: 'none' }}>
               <div style={style.amountDiv}>
@@ -465,7 +514,9 @@ export const Synthese = ({ results, colors }) => {
                 <p style={style.revenuNet}>Revenu net</p>
                 <p style={style.revenuNet}>{format(revenuNet)} €</p>
               </div>
-              <p style={{ ...style.percentage, ...style.revenuNet }}>{revenuNet > 0 ? getPercentage(revenuNet) : '- '}%</p>
+              <p style={{ ...style.percentage, ...style.revenuNet }}>
+                {revenuNet > 0 ? getPercentage(revenuNet) : '- '}%
+              </p>
             </div>
           </div>
         </section>
@@ -482,8 +533,11 @@ export const Synthese = ({ results, colors }) => {
             ...style.categoryTop,
             backgroundColor: colors.xxlBlueGray,
             justifyContent: 'space-between',
-          }}>
-          <h2 style={{ ...style.categoryTitle, fontSize: '1.3rem' }}>Résultat de la société</h2>
+          }}
+        >
+          <h2 style={{ ...style.categoryTitle, fontSize: '1.3rem' }}>
+            Résultat de la société
+          </h2>
 
           <div style={style.lineContainingDiv}>
             <div style={style.lineDiv}>
@@ -525,13 +579,18 @@ export const Synthese = ({ results, colors }) => {
               style={{
                 ...style.lineDiv,
                 borderBottom: 'none',
-              }}>
+              }}
+            >
               <div style={style.amountDiv}>
                 <p style={style.revenuPBold}>Bénéfice distribuable</p>
-                <p style={style.revenuPBold}>{format(dividende + flatTax) || 0} €</p>
+                <p style={style.revenuPBold}>
+                  {format(dividende + flatTax) || 0} €
+                </p>
               </div>
 
-              <p style={{ ...style.percentage, ...style.revenuPBold }}>{getPercentage(dividende + flatTax)}%</p>
+              <p style={{ ...style.percentage, ...style.revenuPBold }}>
+                {getPercentage(dividende + flatTax)}%
+              </p>
             </div>
           </div>
         </section>
@@ -541,8 +600,11 @@ export const Synthese = ({ results, colors }) => {
           sx={{
             ...style.category,
             backgroundColor: colors.xxlBlueGray,
-          }}>
-          <h2 style={{ ...style.categoryTitle, fontSize: '1.3rem' }}>Résultat du freelance</h2>
+          }}
+        >
+          <h2 style={{ ...style.categoryTitle, fontSize: '1.3rem' }}>
+            Résultat du freelance
+          </h2>
           <div style={style.lineContainingDiv}>
             <div style={style.lineDivMinus}>
               <div style={style.amountDiv}>
@@ -563,7 +625,9 @@ export const Synthese = ({ results, colors }) => {
                 <p>Versement de dividendes</p>
                 <p>{format(dividende + flatTax) || 0} €</p>
               </div>
-              <p style={style.percentage}>{getPercentage(dividende + flatTax)}%</p>
+              <p style={style.percentage}>
+                {getPercentage(dividende + flatTax)}%
+              </p>
             </div>
             <div style={{ ...style.lineDivMinus, borderBottom: '1px solid' }}>
               <div style={style.amountDiv}>
@@ -576,12 +640,15 @@ export const Synthese = ({ results, colors }) => {
               style={{
                 ...style.lineDiv,
                 borderBottom: 'none',
-              }}>
+              }}
+            >
               <div style={style.amountDiv}>
                 <p style={style.revenuNet}>Revenu net</p>
                 <p style={style.revenuNet}>{format(revenuNet)} €</p>
               </div>
-              <p style={{ ...style.percentage, ...style.revenuNet }}>{getPercentage(revenuNet)}%</p>
+              <p style={{ ...style.percentage, ...style.revenuNet }}>
+                {getPercentage(revenuNet)}%
+              </p>
             </div>
           </div>
         </Box>
@@ -603,7 +670,13 @@ export const Synthese = ({ results, colors }) => {
 
   return (
     <Box width={{ xs: '95%', sm: '90%', '2xl': '85%' }} style={style.section}>
-      {!isResults ? SyntheseDefault() : socialForm === 'ME' ? SyntheseME() : socialForm === 'SARL' ? SyntheseSARL() : SyntheseSAS()}
+      {!isResults
+        ? SyntheseDefault()
+        : socialForm === 'ME'
+        ? SyntheseME()
+        : socialForm === 'SARL'
+        ? SyntheseSARL()
+        : SyntheseSAS()}
 
       {PrelevementsObligatoires()}
       {SituationFiscale()}

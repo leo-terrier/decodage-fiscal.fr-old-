@@ -3,7 +3,13 @@ import { Box, Text } from '@chakra-ui/react';
 import { BsLink45Deg } from 'react-icons/bs';
 import { FaLinkedinIn } from 'react-icons/fa';
 import { SiFacebook, SiTwitter } from 'react-icons/si';
-import { FacebookShareButton, LinkedinShareButton, TwitterShareButton, WhatsappIcon, WhatsappShareButton } from 'react-share';
+import {
+  FacebookShareButton,
+  LinkedinShareButton,
+  TwitterShareButton,
+  WhatsappIcon,
+  WhatsappShareButton,
+} from 'react-share';
 import { serialize } from '../../util/helper';
 
 const iconContainer = {
@@ -16,8 +22,8 @@ const iconContainer = {
 };
 
 export default function shareButtons({ router }) {
-
-  const simulationToShare = 'https://decodage-fiscal.fr?' + serialize(router.query);
+  const simulationToShare =
+    'https://decodage-fiscal-netlify.netlify.app/?' + serialize(router.query);
 
   const [copiedMessage, setCopiedMessage] = useState(false);
 
@@ -35,7 +41,8 @@ export default function shareButtons({ router }) {
         boxShadow: '0 1px 4px rgba(0, 0, 0, .3)',
         padding: '12px 30px',
         color: '#2D3142',
-      }}>
+      }}
+    >
       <Text mr={{ xs: 0, sm: '15px' }}>PARTAGER :</Text>
       <Box sx={{ display: 'flex' }}>
         <Box
@@ -48,7 +55,8 @@ export default function shareButtons({ router }) {
             navigator.clipboard.writeText(simulationToShare);
             setCopiedMessage(true);
             setTimeout(() => setCopiedMessage(false), 2000);
-          }}>
+          }}
+        >
           <BsLink45Deg size="25px" />
         </Box>
         <Box
@@ -57,7 +65,8 @@ export default function shareButtons({ router }) {
           display={{ xs: 'flex', sm: 'none' }}
           _hover={{
             backgroundColor: { xs: 'white', sm: 'rgba(0, 0, 0, .08)' },
-          }}>
+          }}
+        >
           <WhatsappShareButton url={simulationToShare}>
             <WhatsappIcon round size="25px" />
           </WhatsappShareButton>
@@ -67,7 +76,8 @@ export default function shareButtons({ router }) {
           sx={{ ...iconContainer, display: 'flex' }}
           _hover={{
             backgroundColor: { xs: 'white', sm: 'rgba(0, 0, 0, .08)' },
-          }}>
+          }}
+        >
           <LinkedinShareButton url={simulationToShare}>
             <FaLinkedinIn color="#0e76a8" size="25px" />
           </LinkedinShareButton>
@@ -77,7 +87,8 @@ export default function shareButtons({ router }) {
           sx={{ ...iconContainer, display: 'flex' }}
           _hover={{
             backgroundColor: { xs: 'white', sm: 'rgba(0, 0, 0, .08)' },
-          }}>
+          }}
+        >
           <TwitterShareButton url={simulationToShare}>
             <SiTwitter color="#1DA1F2" size="25px" />
           </TwitterShareButton>
@@ -87,7 +98,8 @@ export default function shareButtons({ router }) {
           sx={{ ...iconContainer, display: 'flex' }}
           _hover={{
             backgroundColor: { xs: 'white', sm: 'rgba(0, 0, 0, .08)' },
-          }}>
+          }}
+        >
           <FacebookShareButton url={simulationToShare}>
             <SiFacebook color="#1778F2" size="25px" />
           </FacebookShareButton>
@@ -109,7 +121,8 @@ export default function shareButtons({ router }) {
           fontFamily: 'Nunito Sans',
           fontWeight: 700,
         }}
-        transition="all .1s">
+        transition="all .1s"
+      >
         Lien copié !
       </Text>
     </Box>
