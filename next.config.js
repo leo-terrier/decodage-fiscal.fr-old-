@@ -7,5 +7,4 @@ const nextConfig = {
   trailingSlash: true,
 };
 
-module.exports = process.env.NODE_ENV ==="production" ? nextConfig : {};
-
+module.exports = process.env.NODE_ENV ? nextConfig : {};

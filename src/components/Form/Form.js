@@ -328,7 +328,7 @@ export const Form = ({
         'IS',
         'IR',
         'flatTax',
-        'remuneration',
+        'remunerat ion',
         'salaire',
         'dividende',
         'charges',
