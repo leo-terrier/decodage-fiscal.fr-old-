@@ -23,7 +23,7 @@ const iconContainer = {
 
 export default function shareButtons({ router }) {
   const simulationToShare =
-    'https://decodage-fiscal-netlify.netlify.app/?' + serialize(router.query);
+    'https://decodage-fiscal.fr/?' + serialize(router.query);
 
   const [copiedMessage, setCopiedMessage] = useState(false);
 

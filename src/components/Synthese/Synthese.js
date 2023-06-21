@@ -297,7 +297,7 @@ export const Synthese = ({ results, colors }) => {
           >
             Total des prélèvements obligatoires
           </h2>
-          {/* //https://wave.webaim.org/report#/https://decodage-fiscal-netlify.netlify.app/
+          {/* //https://wave.webaim.org/report#/https://decodage-fiscal.fr/
            */}{' '}
           <div
             style={{

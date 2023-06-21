@@ -48,7 +48,7 @@ Le Tarif Journalier Moyen à facturer est calculé, avec possibilité d'ajuster 
 
 Un onglet partage permettant de copier dans le presse-papier et/ou de partager le lien de la simulation a été ajouté.
 
-<a href="https://decodage-fiscal-netlify.netlify.app//"> Lien du déploiement </a><br/>
+<a href="https://decodage-fiscal.fr/"> Lien du déploiement </a><br/>
 
 ## Screenshots
 
